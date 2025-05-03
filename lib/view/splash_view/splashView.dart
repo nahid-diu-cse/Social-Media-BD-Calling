@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/view/onBoarding_view/view/onBoaring_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -17,7 +18,7 @@ class _SplashViewState extends State<SplashView> {
     // Navigate to OnboardingScreen after 4 seconds
     Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
-        Get.offAllNamed('/onboarding');
+     Get.offAll(()=>OnBoardingView());
       }
     });
   }
