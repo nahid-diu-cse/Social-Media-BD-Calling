@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/res/commonWidget/custom_button.dart';
+import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/customStyle/customText.dart';
 
 class ChangePasswordView extends StatefulWidget {
@@ -33,7 +35,8 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
             ),
             SizedBox(height: 32),
             CustomText(
-              title: "Please create and enter a new password \nfor your account",
+              title:
+                  "Please create and enter a new password \nfor your account",
               textAlign: TextAlign.center,
               fontSize: 18,
               color: AppColors.black100,
@@ -48,6 +51,28 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                 ),
               ],
             ),
+            SizedBox(height: 10),
+            CustomTextFormField(
+              hintText: "Enter Password",
+              suffixIcon: Icon(Icons.visibility),
+            ),
+            SizedBox(height: 15),
+            Row(
+              children: [
+                CustomText(
+                  title: "New Password",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            CustomTextFormField(
+              hintText: "Enter confirm Password",
+              suffixIcon: Icon(Icons.visibility),
+            ),
+            SizedBox(height: 20),
+            CustomButton(title: "Next",fontSize: 16,fontWeight: FontWeight.w500, onTap: () {}),
           ],
         ),
       ),
