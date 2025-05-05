@@ -37,7 +37,7 @@ class CustomContainerTextCard extends StatelessWidget {
           title: text,
           color: textColor ?? AppColors.bgColor,
           fontSize: fontSize ?? 16,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );

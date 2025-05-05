@@ -4,7 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_media/view/forgetSystem_view/change_password_view/change_password_view.dart';
 import 'package:social_media/view/friend_connection_view/friend_connection_view.dart';
+import 'package:social_media/view/group_messsage_view/group_chat_view.dart';
+import 'package:social_media/view/group_messsage_view/widget/group_chat_view_card.dart';
 import 'package:social_media/view/home_view/home_view.dart';
+import 'package:social_media/view/member_view/member_view.dart';
 import 'package:social_media/view/message_view/message_view.dart';
 import 'package:social_media/view/message_view/messages_chat_view.dart';
 import 'package:social_media/view/new_post_view/clips_gallery_view.dart';
@@ -46,7 +49,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
-          home: ClipsGalleryView(),
+          home: SplashView(),
         );
       },
     );

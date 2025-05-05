@@ -23,6 +23,20 @@ class AppImages {
   static String livia = "assets/images/livia.png";
   static String willpost = "assets/images/willpost.png";
 
+  /// clips_gallery_view
+  static String clip = "assets/images/clip.png";
+  static String photo = "assets/images/photo.png";
+  static String image = "assets/images/image.png";
+  static String image1 = "assets/images/image1.png";
+  static String image2 = "assets/images/image2.png";
+  static String image3 = "assets/images/image3.png";
+  static String image4 = "assets/images/image4.png";
+  static String image5 = "assets/images/image5.png";
+  static String image6 = "assets/images/image6.png";
+  static String image7 = "assets/images/image7.png";
+  static String image8 = "assets/images/image8.png";
+  static String image9 = "assets/images/image9.png";
+
   // =================================icons=============================================
   static String friend = "assets/icon/friend.png";
   static String notification = "assets/icon/notification.png";
@@ -39,7 +53,15 @@ class AppImages {
   static String video = "assets/icon/video.png";
   static String call = "assets/icon/call.png";
   static String add = "assets/icon/add.png";
-  static String clips = "assets/icon/clips.png";
+
+  /// clips_gallery_view
+  static String icons = "assets/icon/icon.png";
+  static String play = "assets/icon/play.png";
+  static String arrow = "assets/icon/arrow.png";
+  static String square = "assets/icon/square plus.png";
+  static String videoplay = "assets/icon/videoplay.png";
+  static String camera = "assets/icon/camera.png";
+  static String microphone = "assets/icon/microphone.png";
 
   // ==================================Lottie animations=============================================
 

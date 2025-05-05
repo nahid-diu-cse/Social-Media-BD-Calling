@@ -6,16 +6,21 @@ class CustomTextField extends StatelessWidget {
     this.hintText,
     this.prefixIcon,
     this.suffixIcon,
+    this.width,
+    this.borderSide,
   });
 
   final String? hintText;
   final Icon? prefixIcon;
   final Icon? suffixIcon;
+  final double? width;
+  final BorderSide? borderSide;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 44,
+      width: width,
       child: TextFormField(
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
@@ -26,7 +31,7 @@ class CustomTextField extends StatelessWidget {
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: Colors.red),
+            borderSide: borderSide ?? BorderSide(color: Colors.red),
           ),
           hintText: hintText,
           prefixIcon: prefixIcon,

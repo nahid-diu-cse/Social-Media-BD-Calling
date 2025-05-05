@@ -6,14 +6,14 @@ import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
 import 'package:social_media/res/commonWidget/custom_text_field.dart';
 import 'package:social_media/res/customStyle/customText.dart';
 
-class MessagesChatView extends StatefulWidget {
-  const MessagesChatView({super.key});
+class GroupChatView extends StatefulWidget {
+  const GroupChatView({super.key});
 
   @override
-  State<MessagesChatView> createState() => _MessagesChatViewState();
+  State<GroupChatView> createState() => _GroupChatViewState();
 }
 
-class _MessagesChatViewState extends State<MessagesChatView> {
+class _GroupChatViewState extends State<GroupChatView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +89,7 @@ class _MessagesChatViewState extends State<MessagesChatView> {
                     children: [
                       CustomText(
                         title:
-                            "Messages and calls are secured with end-to-end encryption.",
+                        "Messages and calls are secured with end-to-end encryption.",
                         fontSize: 13,
                         fontWeight: FontWeight.w400,
                       ),

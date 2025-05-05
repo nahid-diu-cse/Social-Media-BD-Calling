@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors_in_immutables
-
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
@@ -16,7 +14,7 @@ class CustomText extends StatelessWidget {
   final double? letterSpacing;
   final TextStyle? style;
 
-  CustomText({
+  const CustomText({
     super.key,
     required this.title,
     this.fontSize = 12,

@@ -5,6 +5,8 @@ import 'package:social_media/res/appImage/App_images.dart';
 import 'package:social_media/res/customStyle/customText.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
 import 'package:social_media/view/friend_connection_view/friend_connection_view.dart';
+import 'package:social_media/view/new_post_view/clips_view.dart';
+import 'package:social_media/view/new_post_view/new_post_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -46,16 +48,93 @@ class _HomeViewState extends State<HomeView> {
             Row(
               children:
                   stories.map((story) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 5),
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 45,
-                            backgroundImage: AssetImage(story['image']!),
+                    return GestureDetector(
+                      onTap: () {
+                        Get.bottomSheet(
+                          Container(
+                            height: 151,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                topRight: Radius.circular(15),
+                              ),
+                              color: AppColors.bgColor,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                // crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 5),
+                                  Container(
+                                    height: 5,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(3),
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  GestureDetector(
+                                    onTap: (){
+                                      Get.to(()=>NewPostView());
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                          AppImages.square,
+                                          height: 18,
+                                          width: 18,
+                                        ),
+                                        SizedBox(width: 10),
+                                        CustomText(
+                                          title: "New Post",
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Divider(),
+                                  SizedBox(height: 5),
+                                  GestureDetector(
+                                    onTap: (){
+                                      Get.to(()=>ClipsView());
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                          AppImages.square,
+                                          height: 18,
+                                          width: 18,
+                                        ),
+                                        SizedBox(width: 10),
+                                        CustomText(
+                                          title: "Clips",
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          CustomText(title: story['name']!, fontSize: 13),
-                        ],
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 5),
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 45,
+                              backgroundImage: AssetImage(story['image']!),
+                            ),
+                            CustomText(title: story['name']!, fontSize: 13),
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),
@@ -76,8 +155,8 @@ class _HomeViewState extends State<HomeView> {
                     ),
                     SizedBox(width: 10),
                     GestureDetector(
-                      onTap: (){
-                        Get.to(()=>FriendConnectionView());
+                      onTap: () {
+                        Get.to(() => FriendConnectionView());
                       },
                       child: CustomText(
                         title: "Connections",
@@ -92,7 +171,7 @@ class _HomeViewState extends State<HomeView> {
               ],
             ),
             Divider(),
-            Container(
+            SizedBox(
               height: 400,
               width: 343,
               child: Column(
@@ -223,7 +302,7 @@ class _HomeViewState extends State<HomeView> {
               ],
             ),
             SizedBox(height: 10),
-            Container(
+            SizedBox(
               height: 200,
               width: 343,
               child: Column(
@@ -337,7 +416,7 @@ class _HomeViewState extends State<HomeView> {
             ),
             Divider(),
             SizedBox(height: 10),
-            Container(
+            SizedBox(
               height: 470,
               width: 343,
               child: Column(

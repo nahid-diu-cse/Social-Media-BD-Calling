@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/App_images.dart';
 import 'package:social_media/res/customStyle/customText.dart';
@@ -22,27 +23,37 @@ class _NewPostViewState extends State<NewPostView> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.arrow_back_ios),
+                  GestureDetector(
+                      onTap: (){
+                        Get.back();
+                      },
+                      child: Icon(Icons.arrow_back_ios)),
                   CustomText(
                     title: "New Post",
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
-                  CustomText(title: "Post",fontWeight: FontWeight.w600,fontSize: 16,color: AppColors.mainColor,),
+                  CustomText(
+                    title: "Post",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    color: AppColors.mainColor,
+                  ),
                 ],
               ),
               Divider(),
-              SizedBox(height: 10),
+              SizedBox(height: 8),
               Row(
                 children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage(AppImages.istiak),
-                  ),
+                  CircleAvatar(backgroundImage: AssetImage(AppImages.istiak)),
                   SizedBox(width: 15),
-                  CustomText(title: "Write post description...",fontSize: 14,fontWeight: FontWeight.w400,)
+                  CustomText(
+                    title: "Write post description...",
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ],
-              )
-              
+              ),
             ],
           ),
         ),
