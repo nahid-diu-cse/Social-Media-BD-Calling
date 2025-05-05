@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/App_images.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
@@ -27,7 +28,10 @@ class _CreateAccountViewState extends State<CreateAccountView> {
           ),
         ),
         centerTitle: true,
-        leading: Icon(Icons.arrow_back_ios_new),
+        leading: GestureDetector(
+          onTap: Get.back,
+          child: Icon(Icons.arrow_back_ios_new),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/App_images.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_divider_text.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/view/forgetSystem_view/forget_password_view/forget_password_view.dart';
+import 'package:social_media/view/home_view/home_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -22,7 +25,9 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(
         title: Text("Log in",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w400,color: AppColors.black100),),
         centerTitle: true,
-        leading: Icon(Icons.arrow_back_ios_new),
+        leading: GestureDetector(
+            onTap: Get.back,
+            child: Icon(Icons.arrow_back_ios_new)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -37,12 +42,6 @@ class _LoginViewState extends State<LoginView> {
               ],
             ),
             SizedBox(height: 40),
-            CustomText(
-              title: "First Name",
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-            SizedBox(height: 10),
             CustomText(
               title: "Email",
               fontSize: 16,
@@ -79,11 +78,16 @@ class _LoginViewState extends State<LoginView> {
                     CustomText(title: "Keep me logged in", fontSize: 16),
                   ],
                 ),
-                CustomText(
-                  title: "Forget Password?",
-                  color: AppColors.mainColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
+                GestureDetector(
+                  onTap: (){
+                    Get.to(()=>ForgetPasswordView());
+                  },
+                  child: CustomText(
+                    title: "Forget Password?",
+                    color: AppColors.mainColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ],
             ),
@@ -92,7 +96,7 @@ class _LoginViewState extends State<LoginView> {
               title: "Log In",
               fontSize: 16,
               onTap: () {
-                //Get.to(() => LoginView());
+                Get.to(() => HomeView());
               },
             ),
             SizedBox(height: 32),

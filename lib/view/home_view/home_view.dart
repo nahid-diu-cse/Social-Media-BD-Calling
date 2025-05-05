@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/App_images.dart';
 import 'package:social_media/res/customStyle/customText.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
+import 'package:social_media/view/friend_connection_view/friend_connection_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -73,11 +75,16 @@ class _HomeViewState extends State<HomeView> {
                       fontWeight: FontWeight.w600,
                     ),
                     SizedBox(width: 10),
-                    CustomText(
-                      title: "Connections",
-                      fontSize: 16,
-                      color: AppColors.black100,
-                      fontWeight: FontWeight.w600,
+                    GestureDetector(
+                      onTap: (){
+                        Get.to(()=>FriendConnectionView());
+                      },
+                      child: CustomText(
+                        title: "Connections",
+                        fontSize: 16,
+                        color: AppColors.black100,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ],
                 ),

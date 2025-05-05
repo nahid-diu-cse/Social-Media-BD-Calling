@@ -21,13 +21,7 @@ class AppImages {
   static String hanna = "assets/images/hanna.png";
   static String hanna1 = "assets/images/hanna1.png";
   static String livia = "assets/images/livia.png";
-
-
-
-
-
-
-
+  static String willpost = "assets/images/willpost.png";
 
   // =================================icons=============================================
   static String friend = "assets/icon/friend.png";
@@ -42,14 +36,12 @@ class AppImages {
   static String share = "assets/icon/share.png";
   static String dot = "assets/icon/3dot.png";
   static String blockchain = "assets/icon/blockchain.png";
-
-
+  static String video = "assets/icon/video.png";
+  static String call = "assets/icon/call.png";
+  static String add = "assets/icon/add.png";
+  static String clips = "assets/icon/clips.png";
 
   // ==================================Lottie animations=============================================
 
-
   // ==================================SVG=============================================
-
-
-
 }

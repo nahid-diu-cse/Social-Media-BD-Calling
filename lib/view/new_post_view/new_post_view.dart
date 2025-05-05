@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+import 'package:social_media/res/appColors/app_colors.dart';
+import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/res/customStyle/customText.dart';
+
+class NewPostView extends StatefulWidget {
+  const NewPostView({super.key});
+
+  @override
+  State<NewPostView> createState() => _NewPostViewState();
+}
+
+class _NewPostViewState extends State<NewPostView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.arrow_back_ios),
+                  CustomText(
+                    title: "New Post",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  CustomText(title: "Post",fontWeight: FontWeight.w600,fontSize: 16,color: AppColors.mainColor,),
+                ],
+              ),
+              Divider(),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage(AppImages.istiak),
+                  ),
+                  SizedBox(width: 15),
+                  CustomText(title: "Write post description...",fontSize: 14,fontWeight: FontWeight.w400,)
+                ],
+              )
+              
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -7,6 +7,9 @@ import 'package:social_media/view/friend_connection_view/friend_connection_view.
 import 'package:social_media/view/home_view/home_view.dart';
 import 'package:social_media/view/message_view/message_view.dart';
 import 'package:social_media/view/message_view/messages_chat_view.dart';
+import 'package:social_media/view/new_post_view/clips_gallery_view.dart';
+import 'package:social_media/view/new_post_view/clips_view.dart';
+import 'package:social_media/view/new_post_view/new_post_view.dart';
 import 'package:social_media/view/onBoarding_view/view/onBoaring_view.dart';
 import 'package:social_media/view/select_category_view/select_category_view.dart';
 import 'package:social_media/view/splash_view/splashView.dart';
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
-          home: MessagesChatView(),
+          home: ClipsGalleryView(),
         );
       },
     );
