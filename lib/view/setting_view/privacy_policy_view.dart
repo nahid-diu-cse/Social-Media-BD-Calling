@@ -37,7 +37,7 @@ class _PrivacyPolicyViewState extends State<PrivacyPolicyView> {
                 CustomText(title: "1. ", fontSize: 15),
                 CustomText(
                   title:
-                  "Lorem ipsum dolor sit amet consectetur.\nImperdiet iaculis convallis bibendum massa id\nelementum consectetur neque mauris.",
+                      "Lorem ipsum dolor sit amet consectetur.\nImperdiet iaculis convallis bibendum massa id\nelementum consectetur neque mauris.",
                   fontSize: 15,
                   maxLines: 3,
                 ),
@@ -47,10 +47,10 @@ class _PrivacyPolicyViewState extends State<PrivacyPolicyView> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(title: "1. ", fontSize: 15),
+                CustomText(title: "2. ", fontSize: 15),
                 CustomText(
                   title:
-                  "Lorem ipsum dolor sit amet consectetur.\nImperdiet iaculis convallis bibendum massa id\nelementum consectetur neque mauris.",
+                      "Lorem ipsum dolor sit amet consectetur.\nImperdiet iaculis convallis bibendum massa id\nelementum consectetur neque mauris.",
                   fontSize: 15,
                   maxLines: 3,
                 ),
@@ -60,10 +60,10 @@ class _PrivacyPolicyViewState extends State<PrivacyPolicyView> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(title: "1. ", fontSize: 15),
+                CustomText(title: "3. ", fontSize: 15),
                 CustomText(
                   title:
-                  "Lorem ipsum dolor sit amet consectetur.\nImperdiet iaculis convallis bibendum massa id\nelementum consectetur neque mauris.",
+                      "Lorem ipsum dolor sit amet consectetur.\nImperdiet iaculis convallis bibendum massa id\nelementum consectetur neque mauris.",
                   fontSize: 15,
                   maxLines: 3,
                 ),
@@ -73,10 +73,23 @@ class _PrivacyPolicyViewState extends State<PrivacyPolicyView> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(title: "1. ", fontSize: 15),
+                CustomText(title: "4. ", fontSize: 15),
                 CustomText(
                   title:
-                  "Lorem ipsum dolor sit amet consectetur.\nImperdiet iaculis convallis bibendum massa id\nelementum consectetur neque mauris.",
+                      "Lorem ipsum dolor sit amet consectetur.\nImperdiet iaculis convallis bibendum massa id\nelementum consectetur neque mauris.",
+                  fontSize: 15,
+                  maxLines: 3,
+                ),
+              ],
+            ),
+            SizedBox(height: 5),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(title: "5. ", fontSize: 15),
+                CustomText(
+                  title:
+                      "Lorem ipsum dolor sit amet consectetur.\nImperdiet iaculis convallis bibendum massa id\nelementum consectetur neque mauris.",
                   fontSize: 15,
                   maxLines: 3,
                 ),

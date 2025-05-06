@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/customStyle/customText.dart';
 
-class TeamsServiceView extends StatefulWidget {
-  const TeamsServiceView({super.key});
+class AboutUsView extends StatefulWidget {
+  const AboutUsView({super.key});
 
   @override
-  State<TeamsServiceView> createState() => _TeamsServiceViewState();
+  State<AboutUsView> createState() => _AboutUsViewState();
 }
 
-class _TeamsServiceViewState extends State<TeamsServiceView> {
+class _AboutUsViewState extends State<AboutUsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Terms of Conditions",
+          "About us",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         leading: GestureDetector(

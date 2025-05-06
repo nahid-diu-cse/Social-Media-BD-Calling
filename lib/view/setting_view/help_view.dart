@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/App_images.dart';
 import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/view/setting_view/about_us_view.dart';
 import 'package:social_media/view/setting_view/privacy_policy_view.dart';
 import 'package:social_media/view/setting_view/teams_service_view.dart';
 
@@ -64,20 +65,25 @@ class _HelpViewState extends State<HelpView> {
             ),
           ),
           Divider(),
-          ListTile(
-            leading: Image.asset(
-              AppImages.support,
-              height: 24,
-              width: 24,
-              color: AppColors.black33,
+          GestureDetector(
+            onTap: (){
+              Get.to(()=>AboutUsView());
+            },
+            child: ListTile(
+              leading: Image.asset(
+                AppImages.support,
+                height: 24,
+                width: 24,
+                color: AppColors.black33,
+              ),
+              title: CustomText(
+                title: "About Us",
+                fontSize: 14,
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+              ),
+              trailing: Icon(Icons.arrow_forward_ios),
             ),
-            title: CustomText(
-              title: "About Us",
-              fontSize: 14,
-              color: Colors.black,
-              fontWeight: FontWeight.w600,
-            ),
-            trailing: Icon(Icons.arrow_forward_ios),
           ),
           Divider(),
         ],
