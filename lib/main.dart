@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:social_media/view/buttom_navi_bar_view/buttom_navi_bar_view.dart';
 import 'package:social_media/view/forgetSystem_view/change_password_view/change_password_view.dart';
 import 'package:social_media/view/friend_connection_view/friend_connection_view.dart';
 import 'package:social_media/view/group_messsage_view/group_chat_view.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
-          home: SplashView(),
+          home: ButtomNaviBarView(),
         );
       },
     );

@@ -6,6 +6,7 @@ import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_divider_text.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/view/buttom_navi_bar_view/buttom_navi_bar_view.dart';
 import 'package:social_media/view/forgetSystem_view/forget_password_view/forget_password_view.dart';
 import 'package:social_media/view/home_view/home_view.dart';
 
@@ -96,7 +97,7 @@ class _LoginViewState extends State<LoginView> {
               title: "Log In",
               fontSize: 16,
               onTap: () {
-                Get.to(() => HomeView());
+                Get.to(() => ButtomNaviBarView());
               },
             ),
             SizedBox(height: 32),

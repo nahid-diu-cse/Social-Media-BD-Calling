@@ -35,7 +35,7 @@ class _MemberViewState extends State<MemberView> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               SizedBox(
                 height: 36,
                 child: CustomTextField(
@@ -56,7 +56,7 @@ class _MemberViewState extends State<MemberView> {
                       SizedBox(width: 10),
                       CustomText(
                         title: "Istiak Ahmed",
-                        fontSize: 14,
+                        fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
                     ],
@@ -70,7 +70,6 @@ class _MemberViewState extends State<MemberView> {
                 ],
               ),
               Divider(),
-
               ListView.builder(
                 itemCount: 9,
                 shrinkWrap: true,
@@ -85,7 +84,7 @@ class _MemberViewState extends State<MemberView> {
                           SizedBox(width: 10),
                           CustomText(
                             title: "Istiak Ahmed",
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.w500,
                           ),
                         ],

@@ -36,6 +36,9 @@ class AppImages {
   static String image7 = "assets/images/image7.png";
   static String image8 = "assets/images/image8.png";
   static String image9 = "assets/images/image9.png";
+  static String bgimage = "assets/images/bgimage.png";
+  static String profile1 = "assets/images/profile1.png";
+  static String profileedit = "assets/images/profileedit.png";
 
   // =================================icons=============================================
   static String friend = "assets/icon/friend.png";
@@ -53,6 +56,8 @@ class AppImages {
   static String video = "assets/icon/video.png";
   static String call = "assets/icon/call.png";
   static String add = "assets/icon/add.png";
+  static String edit = "assets/icon/edit.png";
+  static String addphoto = "assets/icon/addphoto.png";
 
   /// clips_gallery_view
   static String icons = "assets/icon/icon.png";
@@ -62,6 +67,11 @@ class AppImages {
   static String videoplay = "assets/icon/videoplay.png";
   static String camera = "assets/icon/camera.png";
   static String microphone = "assets/icon/microphone.png";
+  static String account = "assets/icon/account.png";
+  static String security = "assets/icon/security.png";
+  static String listbook = "assets/icon/listbook.png";
+  static String privacy = "assets/icon/privacy.png";
+  static String support = "assets/icon/support.png";
 
   // ==================================Lottie animations=============================================
 

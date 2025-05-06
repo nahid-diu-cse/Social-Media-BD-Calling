@@ -12,6 +12,7 @@ class CustomContainerTextCard extends StatelessWidget {
     this.fontSize,
     this.border,
     this.cardColor,
+    this.borderRadius,
   });
 
   final double? height;
@@ -21,6 +22,7 @@ class CustomContainerTextCard extends StatelessWidget {
   final Color? cardColor;
   final double? fontSize;
   final Border? border;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class CustomContainerTextCard extends StatelessWidget {
       height: height ?? 30,
       width: width ?? 73,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: borderRadius ?? BorderRadius.circular(15),
         color: cardColor ?? AppColors.mainColor,
         border: border,
       ),

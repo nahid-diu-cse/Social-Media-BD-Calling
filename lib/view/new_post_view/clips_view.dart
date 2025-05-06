@@ -69,14 +69,10 @@ class _ClipsViewState extends State<ClipsView> {
                 ],
               ),
               SizedBox(height: 5),
-              Row(
-                children: [
-                  CustomText(
-                    title: "What you want to say?",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ],
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Write post description...",
+                ),
               ),
             ],
           ),

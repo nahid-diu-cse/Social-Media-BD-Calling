@@ -538,33 +538,6 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        backgroundColor: Colors.green,
-        fixedColor: AppColors.mainColor,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.blueAccent),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.block_flipped, color: Colors.blueAccent),
-            label: 'Chain',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add, color: Colors.blueAccent),
-            label: 'New',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group, color: Colors.blueAccent),
-            label: 'Community',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.blueAccent),
-            label: 'Profile',
-          ),
-        ],
-      ),
     );
   }
 }
