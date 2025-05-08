@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/App_images.dart';
@@ -25,7 +26,10 @@ class _SettingViewState extends State<SettingView> {
           "Edit Profile",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
-        leading: Icon(Icons.arrow_back_ios),
+        leading: InkWell(
+          child: Icon(Icons.arrow_back_ios, size: 15.sp),
+          onTap: () => Get.back(),
+        ),
         centerTitle: true,
       ),
       body: Padding(

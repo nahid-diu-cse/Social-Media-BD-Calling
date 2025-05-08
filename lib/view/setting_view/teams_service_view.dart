@@ -29,6 +29,7 @@ class _TeamsServiceViewState extends State<TeamsServiceView> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 15),
             Row(

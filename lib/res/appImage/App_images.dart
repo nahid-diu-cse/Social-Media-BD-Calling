@@ -13,7 +13,7 @@ class AppImages {
   static String story = "assets/images/story.png";
   static String alishadoe = "assets/images/alisha doe.png";
   static String dog = "assets/images/dog.png";
-  static String plus = "assets/images/plus.png";
+  static String plus = "assets/icon/plus.png";
   static String catherine = "assets/images/catherine.png";
   static String istiak = "assets/images/istiak.png";
   static String randy = "assets/images/randy stanton.png";
@@ -58,6 +58,10 @@ class AppImages {
   static String add = "assets/icon/add.png";
   static String edit = "assets/icon/edit.png";
   static String addphoto = "assets/icon/addphoto.png";
+  static String media = "assets/icon/media.png";
+  static String volume = "assets/icon/volume.png";
+  static String logout = "assets/icon/logout.png";
+  static String chain = "assets/icon/chain.png";
 
   /// clips_gallery_view
   static String icons = "assets/icon/icon.png";

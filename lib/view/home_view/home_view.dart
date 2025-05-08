@@ -5,6 +5,7 @@ import 'package:social_media/res/appImage/App_images.dart';
 import 'package:social_media/res/customStyle/customText.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
 import 'package:social_media/view/friend_connection_view/friend_connection_view.dart';
+import 'package:social_media/view/home_view/chat_view/chat_list_view.dart';
 import 'package:social_media/view/new_post_view/clips_view.dart';
 import 'package:social_media/view/new_post_view/new_post_view.dart';
 
@@ -32,7 +33,12 @@ class _HomeViewState extends State<HomeView> {
           SizedBox(width: 15),
           Image.asset(AppImages.notification, width: 22, height: 22),
           SizedBox(width: 15),
-          Image.asset(AppImages.message, width: 22, height: 22),
+          InkWell(
+            onTap: () {
+              Get.to(ChatListView());
+            },
+            child: Image.asset(AppImages.message, width: 22, height: 22),
+          ),
           SizedBox(width: 15),
           Image.asset(AppImages.search, width: 22, height: 22),
           SizedBox(width: 15),
@@ -77,8 +83,8 @@ class _HomeViewState extends State<HomeView> {
                                   ),
                                   SizedBox(height: 10),
                                   GestureDetector(
-                                    onTap: (){
-                                      Get.to(()=>NewPostView());
+                                    onTap: () {
+                                      Get.to(() => NewPostView());
                                     },
                                     child: Row(
                                       children: [
@@ -99,8 +105,8 @@ class _HomeViewState extends State<HomeView> {
                                   Divider(),
                                   SizedBox(height: 5),
                                   GestureDetector(
-                                    onTap: (){
-                                      Get.to(()=>ClipsView());
+                                    onTap: () {
+                                      Get.to(() => ClipsView());
                                     },
                                     child: Row(
                                       children: [

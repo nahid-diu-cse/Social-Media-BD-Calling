@@ -38,7 +38,7 @@ class _ClipsGalleryViewState extends State<ClipsGalleryView> {
                           fontWeight: FontWeight.w600,
                         ),
                         SizedBox(width: 5),
-                        Image.asset(AppImages.icons, width: 34, height: 34),
+                        Image.asset(AppImages.account, width: 34, height: 34),
                       ],
                     ),
                     GestureDetector(

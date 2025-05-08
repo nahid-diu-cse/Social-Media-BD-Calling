@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/App_images.dart';
@@ -23,11 +24,9 @@ class _HelpViewState extends State<HelpView> {
           "Helps",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
-        leading: GestureDetector(
-          onTap: () {
-            Get.back();
-          },
-          child: Icon(Icons.arrow_back_ios),
+        leading: InkWell(
+          child: Icon(Icons.arrow_back_ios, size: 15.sp),
+          onTap: () => Get.back(),
         ),
         centerTitle: true,
       ),
@@ -66,8 +65,8 @@ class _HelpViewState extends State<HelpView> {
           ),
           Divider(),
           GestureDetector(
-            onTap: (){
-              Get.to(()=>AboutUsView());
+            onTap: () {
+              Get.to(() => AboutUsView());
             },
             child: ListTile(
               leading: Image.asset(

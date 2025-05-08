@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/view/add_view/add_view.dart';
 import 'package:social_media/view/buttom_navi_bar_view/controller/buttom_navi_controller.dart';
 import 'package:social_media/view/chain_view/chain_view.dart';
 import 'package:social_media/view/community_view/community_view.dart';
@@ -17,7 +19,7 @@ class _ButtomNaviBarViewState extends State<ButtomNaviBarView> {
   final List<Widget> _screens = [
     HomeView(),
     ChainView(),
-    ChainView(),
+    AddView(),
     CommunityView(),
     ProfileView(),
   ];
@@ -39,7 +41,10 @@ class _ButtomNaviBarViewState extends State<ButtomNaviBarView> {
           unselectedItemColor: Colors.grey,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.block), label: "Chain"),
+            BottomNavigationBarItem(
+              icon: Image.asset(AppImages.blockchain, color: Colors.grey),
+              label: "Chain",
+            ),
             BottomNavigationBarItem(icon: Icon(Icons.add), label: "New"),
             BottomNavigationBarItem(
               icon: Icon(Icons.people_outline),
