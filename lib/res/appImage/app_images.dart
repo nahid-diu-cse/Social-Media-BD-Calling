@@ -22,6 +22,7 @@ class AppImages {
   static String hanna1 = "assets/images/hanna1.png";
   static String livia = "assets/images/livia.png";
   static String willpost = "assets/images/willpost.png";
+  static String car = "assets/images/car.png";
 
   /// clips_gallery_view
   static String clip = "assets/images/clip.png";

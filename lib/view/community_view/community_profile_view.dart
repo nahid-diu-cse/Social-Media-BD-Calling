@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/community_view/community_announcements_view.dart';
+import 'package:social_media/view/community_view/community_recent_post.dart';
 import 'package:social_media/view/community_view/community_upcoming_events/community_upcoming_events.dart';
 
 import '../../res/appColors/app_colors.dart';
@@ -104,7 +105,9 @@ class _CommunityProfileViewState extends State<CommunityProfileView> {
               assistTile(
                 title: 'Recent Posts',
                 imagePath: AppImages.listbook,
-                onTap: () {},
+                onTap: () {
+                  Get.to(CommunityRecentPost());
+                },
               ),
               assistTile(
                 title: 'Popular Discussion',
