@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
-import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/res/commonWidget/customText.dart';
 
 class CustomContainerTextCard extends StatelessWidget {
   const CustomContainerTextCard({

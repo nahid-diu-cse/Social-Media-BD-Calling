@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../res/appColors/app_colors.dart';
-import '../../../../res/appImage/App_images.dart';
+import '../../../../res/appImage/app_images.dart';
 import '../../../../res/commonWidget/custom_text_field.dart';
-import '../../../../res/customStyle/customText.dart';
+import '../../../../res/commonWidget/customText.dart';
 
 class CreateChatGroupView extends StatelessWidget {
   CreateChatGroupView({super.key});
@@ -49,7 +49,6 @@ class CreateChatGroupView extends StatelessWidget {
               prefixIcon: const Icon(Icons.search, color: Colors.grey),
               width: double.infinity,
               filled: true,
-              // Optional: enables background color
               fillColor: AppColors.whiteShade1,
               borderColor: Colors.grey.shade200,
               borderWidth: 1,

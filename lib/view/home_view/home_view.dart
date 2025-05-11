@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
-import 'package:social_media/res/appImage/App_images.dart';
-import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/res/appImage/app_images.dart';
+import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
 import 'package:social_media/view/friend_connection_view/friend_connection_view.dart';
 import 'package:social_media/view/home_view/chat_view/chat_list_view.dart';
@@ -18,9 +18,9 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final List<Map<String, String>> stories = [
-    {'name': 'Your Story', 'image': AppImages.story},
-    {'name': 'johndoe', 'image': AppImages.johndoe},
-    {'name': 'alishaperry', 'image': AppImages.alisha},
+    {'name': 'Your Story', 'image': AppImages.story,'type':'own'},
+    {'name': 'johndoe', 'image': AppImages.johndoe,'type':''},
+    {'name': 'alishaperry', 'image': AppImages.alisha, 'type': ''},
   ];
 
   @override
@@ -56,79 +56,8 @@ class _HomeViewState extends State<HomeView> {
                   stories.map((story) {
                     return GestureDetector(
                       onTap: () {
-                        Get.bottomSheet(
-                          Container(
-                            height: 151,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(15),
-                                topRight: Radius.circular(15),
-                              ),
-                              color: AppColors.bgColor,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(height: 5),
-                                  Container(
-                                    height: 5,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(3),
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  SizedBox(height: 10),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Get.to(() => NewPostView());
-                                    },
-                                    child: Row(
-                                      children: [
-                                        Image.asset(
-                                          AppImages.square,
-                                          height: 18,
-                                          width: 18,
-                                        ),
-                                        SizedBox(width: 10),
-                                        CustomText(
-                                          title: "New Post",
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Divider(),
-                                  SizedBox(height: 5),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Get.to(() => ClipsView());
-                                    },
-                                    child: Row(
-                                      children: [
-                                        Image.asset(
-                                          AppImages.square,
-                                          height: 18,
-                                          width: 18,
-                                        ),
-                                        SizedBox(width: 10),
-                                        CustomText(
-                                          title: "Clips",
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
+                        story['type']=='own'?
+                        bottomSnack():null;
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 5),
@@ -542,6 +471,83 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+
+  Future bottomSnack(){
+    return Get.bottomSheet(
+      Container(
+        height: 151,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+          ),
+          color: AppColors.bgColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 5),
+              Container(
+                height: 5,
+                width: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3),
+                  color: Colors.grey,
+                ),
+              ),
+              SizedBox(height: 10),
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => NewPostView());
+                },
+                child: Row(
+                  children: [
+                    Image.asset(
+                      AppImages.square,
+                      height: 18,
+                      width: 18,
+                    ),
+                    SizedBox(width: 10),
+                    CustomText(
+                      title: "New Post",
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ],
+                ),
+              ),
+              Divider(),
+              SizedBox(height: 5),
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => ClipsView());
+                },
+                child: Row(
+                  children: [
+                    Image.asset(
+                      AppImages.square,
+                      height: 18,
+                      width: 18,
+                    ),
+                    SizedBox(width: 10),
+                    CustomText(
+                      title: "Clips",
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

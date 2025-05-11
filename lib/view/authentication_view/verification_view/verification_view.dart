@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
-import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/res/commonWidget/customText.dart';
 
 class VerificationView extends StatelessWidget {
   const VerificationView({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
-import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
-import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/res/commonWidget/customText.dart';
 
 class ProfilePictureView extends StatefulWidget {
   const ProfilePictureView({super.key});

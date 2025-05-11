@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../res/appColors/app_colors.dart';
-import '../../../../res/appImage/App_images.dart';
+import '../../../../res/appImage/app_images.dart';
 import '../../../../res/commonWidget/custom_text_field.dart';
-import '../../../../res/customStyle/customText.dart';
+import '../../../../res/commonWidget/customText.dart';
 
 class CTInviteFriendsView extends StatefulWidget {
   const CTInviteFriendsView({super.key});

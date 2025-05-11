@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
-import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
-import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/res/commonWidget/customText.dart';
 
 class FriendViewCard extends StatelessWidget {
   const FriendViewCard({super.key});

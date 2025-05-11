@@ -2,7 +2,7 @@ import 'package:custom_text_field_with_drop_down/custom_text_field_with_drop_dow
 import 'package:flutter/material.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
-import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/res/commonWidget/customText.dart';
 
 class SelectCategoryView extends StatefulWidget {
   const SelectCategoryView({super.key});

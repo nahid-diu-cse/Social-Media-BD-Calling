@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/view/onBoarding_view/view/onBoaring_view.dart';
 
 class SplashView extends StatefulWidget {

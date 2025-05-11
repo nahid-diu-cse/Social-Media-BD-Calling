@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/view/add_view/add_view.dart';
 import 'package:social_media/view/buttom_navi_bar_view/controller/buttom_navi_controller.dart';
 import 'package:social_media/view/chain_view/chain_view.dart';
@@ -34,7 +34,8 @@ class _ButtomNaviBarViewState extends State<ButtomNaviBarView> {
         () => _screens[controller.selectedIndex.value],
       ), // Dynamic screen update
       bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
+            () => BottomNavigationBar(
+          type: BottomNavigationBarType.fixed, // <-- Add this line
           currentIndex: controller.selectedIndex.value,
           onTap: controller.changeIndex,
           selectedItemColor: Colors.blue,
@@ -54,6 +55,7 @@ class _ButtomNaviBarViewState extends State<ButtomNaviBarView> {
           ],
         ),
       ),
+
     );
   }
 }

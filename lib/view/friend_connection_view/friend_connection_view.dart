@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
-import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/view/friend_connection_view/widget/friend_view_card.dart';
 
 class FriendConnectionView extends StatefulWidget {
@@ -30,11 +31,10 @@ class _FriendConnectionViewState extends State<FriendConnectionView> {
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         centerTitle: true,
-        leading: GestureDetector(
-            onTap: (){
-              Get.back();
-            },
-            child: Icon(Icons.arrow_back_ios)),
+        leading: InkWell(
+          child: Icon(Icons.arrow_back_ios, size: 15.sp),
+          onTap: () => Get.back(),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),

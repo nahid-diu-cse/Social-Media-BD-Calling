@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
-import 'package:social_media/res/appImage/App_images.dart';
-import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/res/appImage/app_images.dart';
+import 'package:social_media/res/commonWidget/custom_app_bar.dart';
+import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/new_post_view/clips_gallery_view.dart';
 
 class ClipsView extends StatefulWidget {
@@ -16,34 +17,25 @@ class _ClipsViewState extends State<ClipsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        title: "Clips",
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: CustomText(
+              title: "Post",
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+              color: AppColors.mainColor,
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Icon(Icons.arrow_back_ios),
-                  ),
-                  CustomText(
-                    title: "Clips",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  CustomText(
-                    title: "Post",
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: AppColors.mainColor,
-                  ),
-                ],
-              ),
-              SizedBox(height: 8),
               Divider(),
               Row(
                 children: [
@@ -57,8 +49,8 @@ class _ClipsViewState extends State<ClipsView> {
                   ),
                   SizedBox(width: 10),
                   GestureDetector(
-                    onTap: (){
-                      Get.to(()=>ClipsGalleryView());
+                    onTap: () {
+                      Get.to(() => ClipsGalleryView());
                     },
                     child: SizedBox(
                       height: 60,

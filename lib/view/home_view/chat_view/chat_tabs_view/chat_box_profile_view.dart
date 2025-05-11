@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:load_switch/load_switch.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
-import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/home_view/chat_view/chat_tabs_view/ct_invite_friends_view.dart';
 import 'package:social_media/view/home_view/chat_view/chat_tabs_view/group_member_view.dart';
 
-import '../../../../res/appImage/App_images.dart';
+import '../../../../res/appImage/app_images.dart';
 
 class ChatBoxProfileView extends StatefulWidget {
   const ChatBoxProfileView({super.key});

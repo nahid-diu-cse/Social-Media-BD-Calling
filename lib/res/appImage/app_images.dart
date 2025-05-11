@@ -39,6 +39,7 @@ class AppImages {
   static String bgimage = "assets/images/bgimage.png";
   static String profile1 = "assets/images/profile1.png";
   static String profileedit = "assets/images/profileedit.png";
+  static String porsche = "assets/images/porsche.png";
 
   // =================================icons=============================================
   static String friend = "assets/icon/friend.png";

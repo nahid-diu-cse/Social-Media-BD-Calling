@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
-import 'package:social_media/res/appImage/App_images.dart';
-import 'package:social_media/res/customStyle/customText.dart';
+import 'package:social_media/res/appImage/app_images.dart';
+import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/chain_view/widget/chain_map_widget.dart';
 
 class ChainView extends StatefulWidget {

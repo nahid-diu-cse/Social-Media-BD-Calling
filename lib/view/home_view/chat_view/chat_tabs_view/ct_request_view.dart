@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../res/appColors/app_colors.dart';
-import '../../../../res/appImage/App_images.dart';
-import '../../../../res/customStyle/customText.dart';
+import '../../../../res/appImage/app_images.dart';
+import '../../../../res/commonWidget/customText.dart';
 import 'chat_box_view.dart';
 
 class CTRequestView extends StatelessWidget {

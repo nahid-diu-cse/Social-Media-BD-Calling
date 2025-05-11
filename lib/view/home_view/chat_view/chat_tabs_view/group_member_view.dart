@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 import '../../../../res/appColors/app_colors.dart';
 import '../../../../res/commonWidget/custom_text_field.dart';
-import '../../../../res/customStyle/customText.dart';
-import '../../../../res/appImage/App_images.dart'; // Make sure this contains your asset image paths
+import '../../../../res/commonWidget/customText.dart';
+import '../../../../res/appImage/app_images.dart'; // Make sure this contains your asset image paths
 
 class GroupMemberView extends StatelessWidget {
   GroupMemberView({super.key});
