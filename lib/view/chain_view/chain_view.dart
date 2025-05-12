@@ -1,8 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
+import 'package:social_media/view/chain_view/create_chain_view.dart';
+import 'package:social_media/view/chain_view/search_chain_network_view.dart';
+import 'package:social_media/view/chain_view/trending_view.dart';
 import 'package:social_media/view/chain_view/widget/chain_map_widget.dart';
 
 class ChainView extends StatefulWidget {
@@ -62,7 +67,9 @@ class _ChainViewState extends State<ChainView> {
                               color: AppColors.gray50.withOpacity(0.05),
                             ),
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                _showBottomSheet(context);
+                              },
                               icon: Image.asset(
                                 AppImages.plus,
                                 height: 22.w,
@@ -96,9 +103,95 @@ class _ChainViewState extends State<ChainView> {
               ),
             ),
           ),
-          ChainMapView()
+          ChainMapView(),
         ],
       ),
+    );
+  }
+
+  void _showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder:
+          (_) => Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(8),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: InkWell(
+                    onTap: () {
+                      Get.to(CreateChainView());
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(AppImages.plus, height: 24, width: 24),
+                        SizedBox(width: 8.0),
+                        CustomText(
+                          title: 'Create New Chain',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: InkWell(
+                    onTap: () {
+                      Get.to(SearchChainNetworkView());
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(AppImages.search, height: 24, width: 24),
+                        SizedBox(width: 8.0),
+                        CustomText(
+                          title: 'Search Chain Networks',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: InkWell(
+                    onTap: () {
+                      Get.to(TrendingView());
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(AppImages.account, height: 24, width: 24),
+                        SizedBox(width: 8.0),
+                        CustomText(
+                          title: 'Invite people to chain',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(),
+              ],
+            ),
+          ),
     );
   }
 

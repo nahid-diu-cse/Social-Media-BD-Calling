@@ -53,12 +53,15 @@ class CommunityAnnouncementsView extends StatelessWidget {
       appBar: CustomAppBar(
         title: "Announcements",
         actions: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.w),
-            child: Icon(Icons.search, size: 24.sp),
+          InkWell(
+            onTap: (){},
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
+              child: Icon(Icons.search, size: 24.sp),
+            ),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.w),
+          InkWell(
+            onTap: (){},
             child: Image.asset(
               AppImages.plus,
               width: 24.w,
@@ -66,7 +69,6 @@ class CommunityAnnouncementsView extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          SizedBox(width: 8.w),
         ],
       ),
       body: SafeArea(

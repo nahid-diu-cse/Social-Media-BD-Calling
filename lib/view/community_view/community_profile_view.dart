@@ -5,9 +5,11 @@ import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/community_view/community_announcements_view.dart';
 import 'package:social_media/view/community_view/community_recent_post.dart';
 import 'package:social_media/view/community_view/community_upcoming_events/community_upcoming_events.dart';
+import 'package:social_media/view/community_view/popular_discussion_view.dart';
 
 import '../../res/appColors/app_colors.dart';
 import '../../res/appImage/App_images.dart';
+import 'marketplace_view/marketplace_view.dart';
 
 class CommunityProfileView extends StatefulWidget {
   const CommunityProfileView({super.key});
@@ -26,60 +28,56 @@ class _CommunityProfileViewState extends State<CommunityProfileView> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              InkWell(
-                onTap: () {},
-                borderRadius: BorderRadius.circular(15),
-                child: ListTile(
-                  leading: SizedBox(
-                    // adjust width to fit both icon and image
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        InkWell(
-                          onTap: () => Get.back(),
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            size: 15.sp,
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(width: 4.w),
-                        Image.asset(
-                          AppImages.profile1,
-                          width: 40.w,
-                          height: 40.w,
-                        ),
-                      ],
-                    ),
-                  ),
-                  title: CustomText(
-                    title: "BMW M Series",
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  subtitle: Row(
+              ListTile(
+                leading: SizedBox(
+                  // adjust width to fit both icon and image
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      CustomText(
-                        title: "250 Members ·",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300,
+                      InkWell(
+                        onTap: () => Get.back(),
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          size: 15.sp,
+                          color: Colors.black,
                         ),
                       ),
-                      SizedBox(width: 5.w),
-                      CustomText(
-                        title: "Public",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300,
-                        ),
+                      SizedBox(width: 4.w),
+                      Image.asset(
+                        AppImages.profile1,
+                        width: 40.w,
+                        height: 40.w,
                       ),
                     ],
                   ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.more_horiz),
-                  ),
+                ),
+                title: CustomText(
+                  title: "BMW M Series",
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitle: Row(
+                  children: [
+                    CustomText(
+                      title: "250 Members ·",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    SizedBox(width: 5.w),
+                    CustomText(
+                      title: "Public",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ],
+                ),
+                trailing: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.more_horiz),
                 ),
               ),
               Divider(),
@@ -112,12 +110,16 @@ class _CommunityProfileViewState extends State<CommunityProfileView> {
               assistTile(
                 title: 'Popular Discussion',
                 imagePath: AppImages.security,
-                onTap: () {},
+                onTap: () {
+                  Get.to(PopularDiscussionView());
+                },
               ),
               assistTile(
                 title: 'Marketplace',
                 imagePath: AppImages.support,
-                onTap: () {},
+                onTap: () {
+                  Get.to(MarketplaceView());
+                },
               ),
 
             ],

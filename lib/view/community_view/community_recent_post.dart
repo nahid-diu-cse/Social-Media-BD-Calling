@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart' show Get;
 import 'package:social_media/res/commonWidget/custom_app_bar.dart';
+import 'package:social_media/view/community_view/community_add_post_view.dart';
 
 import '../../res/appColors/app_colors.dart';
 import '../../res/appImage/App_images.dart';
@@ -19,6 +22,26 @@ class _CommunityRecentPostState extends State<CommunityRecentPost> {
     return Scaffold(
       appBar: CustomAppBar(
         title: "Recent Posts",
+        actions: [
+          InkWell(
+            onTap: (){},
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
+              child: Icon(Icons.search, size: 24.sp),
+            ),
+          ),
+          InkWell(
+            onTap: (){
+              Get.to(()=>CommunityAddPostView());
+            },
+            child: Image.asset(
+              AppImages.plus,
+              width: 24.w,
+              height: 24.w,
+              fit: BoxFit.contain,
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [

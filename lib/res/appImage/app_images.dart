@@ -41,6 +41,11 @@ class AppImages {
   static String profile1 = "assets/images/profile1.png";
   static String profileedit = "assets/images/profileedit.png";
   static String porsche = "assets/images/porsche.png";
+  static String iphone13 = "assets/images/iphone13.png";
+  static String iphone16 = "assets/images/iphone16.png";
+  static String marcedes = "assets/images/marcedes.png";
+  static String woodenChair = "assets/images/woodenChair.png";
+  static String mpview = "assets/images/mpview.png";
 
   // =================================icons=============================================
   static String friend = "assets/icon/friend.png";
@@ -64,6 +69,7 @@ class AppImages {
   static String volume = "assets/icon/volume.png";
   static String logout = "assets/icon/logout.png";
   static String chain = "assets/icon/chain.png";
+
 
   /// clips_gallery_view
   static String icons = "assets/icon/icon.png";

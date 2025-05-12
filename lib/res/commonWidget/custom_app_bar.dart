@@ -44,7 +44,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: Icon(Icons.arrow_back_ios, size: 15.sp, color: Colors.black),
             ),
           ),
-      actions: actions,
+      actions: actions != null
+          ? [
+        Padding(
+          padding: EdgeInsets.only(right: 10.w),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: actions!,
+          ),
+        )
+      ]
+          : null,
+
     );
   }
 }

@@ -22,6 +22,8 @@ class AppColors {
   static const black33 = Color(0xFF333333);
   static const darkHover = Color(0xFF989898);
 
+  static const textColorSecondary = Color(0xFF2D3142);
+
   static const blueDark = Color(0xff0C4798);
   static const blueDarker = Color(0xff062147);
   static const blueDarkHover = Color(0xff0D2398);
