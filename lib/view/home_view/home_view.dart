@@ -6,6 +6,7 @@ import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
 import 'package:social_media/view/friend_connection_view/friend_connection_view.dart';
 import 'package:social_media/view/home_view/chat_view/chat_list_view.dart';
+import 'package:social_media/view/home_view/home_full_story_view.dart';
 import 'package:social_media/view/new_post_view/clips_view.dart';
 import 'package:social_media/view/new_post_view/new_post_view.dart';
 
@@ -19,8 +20,8 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final List<Map<String, String>> stories = [
     {'name': 'Your Story', 'image': AppImages.story,'type':'own'},
-    {'name': 'johndoe', 'image': AppImages.johndoe,'type':''},
-    {'name': 'alishaperry', 'image': AppImages.alisha, 'type': ''},
+    {'name': 'John Doe', 'image': AppImages.johndoe,'type':''},
+    {'name': 'Alisha Pretty', 'image': AppImages.alisha, 'type': ''},
   ];
 
   @override
@@ -57,7 +58,7 @@ class _HomeViewState extends State<HomeView> {
                     return GestureDetector(
                       onTap: () {
                         story['type']=='own'?
-                        bottomSnack():null;
+                        bottomSnack():Get.to(HomeFullStoryView());
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 5),
@@ -121,7 +122,7 @@ class _HomeViewState extends State<HomeView> {
                       fontSize: 15,
                     ),
                     subtitle: Row(
-                      children: [Text("Los Angles,CA "), Text(".20h ago")],
+                      children: [CustomText(title: "Los Angles,CA "), CustomText(title: ".20h ago")],
                     ),
                     trailing: Container(
                       height: 30,
@@ -252,7 +253,7 @@ class _HomeViewState extends State<HomeView> {
                       fontSize: 15,
                     ),
                     subtitle: Row(
-                      children: [Text("Los Angles,CA "), Text(".20h ago")],
+                      children: [CustomText(title: "Los Angles,CA "),  CustomText(title: ".20h ago")],
                     ),
                     trailing: Container(
                       height: 30,

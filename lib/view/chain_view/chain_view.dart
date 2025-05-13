@@ -1,217 +1,137 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:social_media/res/appColors/app_colors.dart';
-import 'package:social_media/res/appImage/app_images.dart';
-import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view/chain_view/create_chain_view.dart';
-import 'package:social_media/view/chain_view/search_chain_network_view.dart';
-import 'package:social_media/view/chain_view/trending_view.dart';
-import 'package:social_media/view/chain_view/widget/chain_map_widget.dart';
+import 'package:graphview/GraphView.dart';
+import 'package:social_media/res/appImage/App_images.dart';
+import 'package:social_media/res/commonWidget/custom_app_bar.dart';
 
 class ChainView extends StatefulWidget {
-  const ChainView({super.key});
-
   @override
-  State<ChainView> createState() => _ChainViewState();
+  _ChainViewState createState() => _ChainViewState();
 }
 
 class _ChainViewState extends State<ChainView> {
+  var json = {
+    "edges": [
+      {"from": "A", "to": "B"},
+      {"from": "C", "to": "B"},
+      {"from": "D", "to": "E"},
+      {"from": "F", "to": "D"},
+      {"from": "B", "to": "D"},
+      {"from": "B", "to": "G"},
+      {"from": "B", "to": "H"},
+      {"from": "I", "to": "J"},
+      {"from": "I", "to": "K"},
+      {"from": "E", "to": "L"},
+      {"from": "D", "to": "I"},
+      {"from": "F", "to": "M"},
+      {"from": "F", "to": "N"},
+      {"from": "F", "to": "O"},
+      {"from": "P", "to": "C"},
+      {"from": "Q", "to": "C"},
+      {"from": "R", "to": "P"},
+      {"from": "S", "to": "Q"},
+      {"from": "A", "to": "F"},
+      {"from": "G", "to": "D"},
+      {"from": "H", "to": "I"},
+      {"from": "J", "to": "K"},
+      {"from": "L", "to": "M"},
+      {"from": "N", "to": "O"},
+      {"from": "Q", "to": "R"},
+      {"from": "S", "to": "T"},
+      {"from": "T", "to": "U"},
+      {"from": "V", "to": "W"},
+      {"from": "W", "to": "X"},
+      {"from": "X", "to": "Y"}
+    ]
+
+  };
+
+  final Graph graph = Graph()..isTree = true;
+  final String primaryNodeId = "E";  // Set primary node ID
+
+  @override
+  void initState() {
+    super.initState();
+    _buildGraph();
+  }
+
+  void _buildGraph() {
+    var edges = json['edges'];
+    for (var element in edges!) {
+      var fromNodeId = element['from'];
+      var toNodeId = element['to'];
+      // Add the edge from 'from' to 'to'
+      graph.addEdge(Node.Id(fromNodeId), Node.Id(toNodeId));
+    }
+
+    builder
+      ..nodeSeparation = 15
+      ..levelSeparation = 15
+      ..orientation = SugiyamaConfiguration.ORIENTATION_TOP_BOTTOM;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        title: "Graph View",
+      ),
       body: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-            decoration: BoxDecoration(color: AppColors.bgColor),
-            child: SafeArea(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          CustomText(
-                            title: "My Network Chain",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 17,
-                            ),
-                          ),
-                          Icon(Icons.keyboard_arrow_down, size: 23.sp),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.gray50.withOpacity(0.05),
-                            ),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(
-                                AppImages.message,
-                                height: 18.w,
-                                width: 18.w,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 5.w),
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.gray50.withOpacity(0.05),
-                            ),
-                            child: IconButton(
-                              onPressed: () {
-                                _showBottomSheet(context);
-                              },
-                              icon: Image.asset(
-                                AppImages.plus,
-                                height: 22.w,
-                                width: 22.w,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 5.h),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    // Enable horizontal scrolling
-                    child: Row(
-                      children: [
-                        _buildRoundedTextButton("People", () {}),
-                        SizedBox(width: 10.w),
-                        _buildRoundedTextButton("Industry", () {}),
-                        SizedBox(width: 10.w),
-                        _buildRoundedTextButton("Location", () {}),
-                        SizedBox(width: 10.w),
-                        _buildRoundedTextButton("School", () {}),
-                        SizedBox(width: 10.w),
-                        _buildRoundedTextButton("Invite", () {}),
-                      ],
-                    ),
-                  ),
-                ],
+          Expanded(
+            child: InteractiveViewer(
+              constrained: false,
+              boundaryMargin: EdgeInsets.all(100),
+              minScale: 0.01,
+              maxScale: 5.6,
+              child: GraphView(
+                graph: graph,
+                algorithm: SugiyamaAlgorithm(builder),
+                paint: Paint()
+                  ..color = Colors.green
+                  ..strokeWidth = 1
+                  ..style = PaintingStyle.stroke,
+                builder: (Node node) {
+                  var a = node.key!.value;
+                  return rectangleWidget(a, node);
+                },
               ),
             ),
           ),
-          ChainMapView(),
         ],
       ),
     );
   }
 
-  void _showBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-      ),
-      builder:
-          (_) => Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(8),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: InkWell(
-                    onTap: () {
-                      Get.to(CreateChainView());
-                    },
-                    child: Row(
-                      children: [
-                        Image.asset(AppImages.plus, height: 24, width: 24),
-                        SizedBox(width: 8.0),
-                        CustomText(
-                          title: 'Create New Chain',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: InkWell(
-                    onTap: () {
-                      Get.to(SearchChainNetworkView());
-                    },
-                    child: Row(
-                      children: [
-                        Image.asset(AppImages.search, height: 24, width: 24),
-                        SizedBox(width: 8.0),
-                        CustomText(
-                          title: 'Search Chain Networks',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: InkWell(
-                    onTap: () {
-                      Get.to(TrendingView());
-                    },
-                    child: Row(
-                      children: [
-                        Image.asset(AppImages.account, height: 24, width: 24),
-                        SizedBox(width: 8.0),
-                        CustomText(
-                          title: 'Invite people to chain',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Divider(),
-              ],
-            ),
-          ),
-    );
-  }
+  // Update this widget to display an image and make primary node centered
+  Widget rectangleWidget(String? a, Node node) {
+    bool isPrimaryNode = a == primaryNodeId;
 
-  Widget _buildRoundedTextButton(String title, VoidCallback onPressed) {
-    return OutlinedButton(
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 3),
-        side: BorderSide(color: Color(0xffE6EAFE)),
-        backgroundColor: Color(0xffF8F9FB),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      ),
-      child: Text(
-        title,
-        style: TextStyle(
-          color: AppColors.gray600,
-          fontSize: 15,
-          fontWeight: FontWeight.w400,
+    return Container(
+      color: isPrimaryNode ? Colors.blue : Colors.amber,  // Primary node gets a distinct color
+      child: InkWell(
+        onTap: () {
+          print('clicked');
+        },
+        child: Container(
+          padding: EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4),
+            boxShadow: [
+              BoxShadow(color: Colors.blue[100]!, spreadRadius: 1),
+            ],
+          ),
+          child: Column(
+            children: [
+              Image.asset(AppImages.hanna), // Image for all nodes
+              SizedBox(height: 8),
+              Text('$a'),  // Node ID displayed here
+            ],
+          ),
         ),
       ),
     );
   }
+
+  final SugiyamaConfiguration builder = SugiyamaConfiguration();
 }

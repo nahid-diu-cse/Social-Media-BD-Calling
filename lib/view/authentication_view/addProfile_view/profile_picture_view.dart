@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
+import 'package:social_media/view/authentication_view/addProfile_view/add_profile_view.dart';
+import 'package:social_media/view/authentication_view/logIn_view/view/login_view.dart';
 
 class ProfilePictureView extends StatefulWidget {
   const ProfilePictureView({super.key});
@@ -40,7 +43,9 @@ class _ProfilePictureViewState extends State<ProfilePictureView> {
             CustomButton(
               title: "Done",
               fontWeight: FontWeight.w500,
-              onTap: () {},
+              onTap: () {
+                Get.offAll(LoginView());
+              },
             ),
             SizedBox(height: 20),
             CustomButton(
@@ -49,7 +54,9 @@ class _ProfilePictureViewState extends State<ProfilePictureView> {
               cardColor: AppColors.bgColor,
               border: Border.all(color: AppColors.mainColor),
               fontWeight: FontWeight.w500,
-              onTap: () {},
+              onTap: () {
+                Get.offAll(AddProfileView());
+              },
             ),
           ],
         ),

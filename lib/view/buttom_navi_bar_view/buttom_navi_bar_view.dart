@@ -34,8 +34,9 @@ class _ButtomNaviBarViewState extends State<ButtomNaviBarView> {
         () => _screens[controller.selectedIndex.value],
       ), // Dynamic screen update
       bottomNavigationBar: Obx(
-            () => BottomNavigationBar(
-          type: BottomNavigationBarType.fixed, // <-- Add this line
+        () => BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          // <-- Add this line
           currentIndex: controller.selectedIndex.value,
           onTap: controller.changeIndex,
           selectedItemColor: Colors.blue,
@@ -55,7 +56,6 @@ class _ButtomNaviBarViewState extends State<ButtomNaviBarView> {
           ],
         ),
       ),
-
     );
   }
 }

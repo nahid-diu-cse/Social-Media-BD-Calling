@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
+import 'package:social_media/res/commonWidget/custom_app_bar.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
+import 'package:social_media/view/authentication_view/addProfile_view/add_profile_view.dart';
 
 class GenderView extends StatefulWidget {
   const GenderView({super.key});
@@ -14,10 +17,13 @@ class _GenderViewState extends State<GenderView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: Icon(Icons.arrow_back_ios_rounded)),
+      appBar: CustomAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 32),
             Row(
@@ -97,7 +103,9 @@ class _GenderViewState extends State<GenderView> {
             CustomButton(title: "Continue",
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
-                onTap: () {}),
+                onTap: () {
+              Get.to(AddProfileView());
+                }),
           ],
         ),
       ),

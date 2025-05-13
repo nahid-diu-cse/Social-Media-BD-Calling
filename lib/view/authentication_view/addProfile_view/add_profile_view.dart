@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
+import 'package:social_media/view/authentication_view/addProfile_view/profile_picture_view.dart';
 
 class AddProfileView extends StatefulWidget {
   const AddProfileView({super.key});
@@ -55,21 +56,26 @@ class _AddProfileViewState extends State<AddProfileView> {
                       child: Column(
                         children: [
                           SizedBox(height: 32),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.photo,
-                                size: 20,
-                                color: AppColors.mainColor,
-                              ),
-                              SizedBox(width: 10),
-                              CustomText(
-                                title: "Choose From Camera Roll",
-                                fontSize: 17,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                              ),
-                            ],
+                          InkWell(
+                            onTap: (){
+                              Get.to(ProfilePictureView());
+                            },
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.photo,
+                                  size: 20,
+                                  color: AppColors.mainColor,
+                                ),
+                                SizedBox(width: 10),
+                                CustomText(
+                                  title: "Choose From Camera Roll",
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black,
+                                ),
+                              ],
+                            ),
                           ),
                           Divider(),
                           SizedBox(height: 10),
