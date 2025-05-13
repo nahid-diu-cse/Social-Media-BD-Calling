@@ -19,6 +19,7 @@ class _AddViewState extends State<AddView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
+        leading: Column(),
         title: "Add Post",
         actions: [
           Padding(

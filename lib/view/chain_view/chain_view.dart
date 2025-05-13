@@ -73,6 +73,7 @@ class _ChainViewState extends State<ChainView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
+        leading: Column(),
         title: "Graph View",
       ),
       body: Column(
