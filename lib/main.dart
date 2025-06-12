@@ -2,20 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:social_media/view/buttom_navi_bar_view/buttom_navi_bar_view.dart';
-import 'package:social_media/view/forgetSystem_view/change_password_view/change_password_view.dart';
-import 'package:social_media/view/friend_connection_view/friend_connection_view.dart';
-import 'package:social_media/view/group_messsage_view/group_chat_view.dart';
-import 'package:social_media/view/group_messsage_view/widget/group_chat_view_card.dart';
-import 'package:social_media/view/home_view/home_view.dart';
-import 'package:social_media/view/member_view/member_view.dart';
-import 'package:social_media/view/message_view/message_view.dart';
-import 'package:social_media/view/message_view/messages_chat_view.dart';
-import 'package:social_media/view/new_post_view/clips_gallery_view.dart';
-import 'package:social_media/view/new_post_view/clips_view.dart';
-import 'package:social_media/view/new_post_view/new_post_view.dart';
-import 'package:social_media/view/onBoarding_view/view/onBoaring_view.dart';
-import 'package:social_media/view/select_category_view/select_category_view.dart';
 import 'package:social_media/view/splash_view/splashView.dart';
 
 void main() {
@@ -50,7 +36,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
-          home: ButtomNaviBarView(),
+          home: SplashView(),
         );
       },
     );

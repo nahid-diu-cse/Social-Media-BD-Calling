@@ -7,31 +7,28 @@ import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_divider_text.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view/authentication_view/verification_view/verification_view.dart';
+import 'package:social_media/view/buttom_navi_bar_view/buttom_navi_bar_view.dart';
+import 'package:social_media/view/forgetSystem_view/forget_password_view/forget_password_view.dart';
 
-import '../../logIn_view/view/login_view.dart';
+import '../../view_model/auth_controller/login_controller.dart';
 
-class CreateAccountView extends StatefulWidget {
-  const CreateAccountView({super.key});
+class LoginView extends StatelessWidget {
+  // Initialize the controller
+  final LoginController loginController = Get.put(LoginController());
 
-  @override
-  State<CreateAccountView> createState() => _CreateAccountViewState();
-}
+  LoginView({super.key});
 
-class _CreateAccountViewState extends State<CreateAccountView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Create Account",
-      ),
+      appBar: CustomAppBar(title: "Log in"),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: 54),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -40,65 +37,69 @@ class _CreateAccountViewState extends State<CreateAccountView> {
               ),
               SizedBox(height: 40),
               CustomText(
-                title: "First Name",
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
-              SizedBox(height: 10),
-              CustomTextFormField(hintText: "Enter your first name"),
-              SizedBox(height: 10),
-              CustomText(
-                title: "Last Name",
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
-              SizedBox(height: 10),
-              CustomTextFormField(hintText: "Enter your first name"),
-              SizedBox(height: 10),
-              CustomText(
-                title: "Location",
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
-              SizedBox(height: 10),
-              CustomTextFormField(hintText: "Enter your location address..."),
-              SizedBox(height: 10),
-              CustomText(
                 title: "Email",
-                fontSize: 15,
+                fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 10),
-              CustomTextFormField(hintText: "Enter your email address..."),
+              CustomTextFormField(
+                controller: loginController.emailController.value,
+                hintText: "Enter your email address...",
+              ),
               SizedBox(height: 10),
               CustomText(
                 title: "Password",
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
-              SizedBox(height: 10),
-              CustomTextFormField(
-                hintText: "Enter password",
-                suffixIcon: Icon(Icons.visibility),
-              ),
-              SizedBox(height: 10),
-              CustomText(
-                title: "Confirm Password",
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
-              SizedBox(height: 10),
-              CustomTextFormField(
-                hintText: "Enter confirm password",
-                suffixIcon: Icon(Icons.visibility),
-              ),
-              SizedBox(height: 10),
-              CustomButton(
-                title: "Sign Up",
                 fontSize: 16,
-                onTap: () {
-                  Get.to(() => VerificationView());
-                },
+                fontWeight: FontWeight.w600,
+              ),
+              SizedBox(height: 10),
+              CustomTextFormField(
+                controller: loginController.passwordController.value,
+                hintText: "Enter password",
+                obscureText: true,
+                suffixIcon: Icon(Icons.visibility),
+              ),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Obx(
+                        () => Checkbox(
+                          value: loginController.isChecked.value,
+                          onChanged: (bool? value) {
+                            loginController.toggleCheckbox(value!);
+                          },
+                          activeColor: AppColors.mainColor,
+                        ),
+                      ),
+                      CustomText(title: "Keep me logged in", fontSize: 16),
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => ForgetPasswordView());
+                    },
+                    child: CustomText(
+                      title: "Forget Password?",
+                      color: AppColors.mainColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 15),
+              Obx(
+                () => CustomButton(
+                  isLoading: loginController.isLoading.value,
+                  title: "Log In",
+                  fontSize: 16,
+                  onTap: () {
+                    loginController.login();
+                  },
+                ),
               ),
               SizedBox(height: 32),
               CustomDividerText(text: 'Or continue with'),
@@ -132,21 +133,18 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomText(
-                    title: "Already have an account! ",
+                    title: "Didn’t have an account? ",
                     color: AppColors.black100,
                     fontSize: 16,
                   ),
                   CustomText(
-                    title: "Log In",
+                    title: "Create an Account",
                     color: AppColors.mainColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-
-              SizedBox(height: 40),
             ],
           ),
         ),

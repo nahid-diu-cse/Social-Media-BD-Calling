@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../res/appColors/app_colors.dart';
-import '../../../res/commonWidget/customText.dart';
-import '../../../res/commonWidget/custom_app_bar.dart';
-import '../../../res/commonWidget/custom_button.dart';
-import '../birthday_view/birthday_view.dart';
+import '../../res/appColors/app_colors.dart';
+import '../../res/commonWidget/customText.dart';
+import '../../res/commonWidget/custom_app_bar.dart';
+import '../../res/commonWidget/custom_button.dart';
+import 'birthday_view.dart';
 
 class VerificationView extends StatelessWidget {
   const VerificationView({super.key});

@@ -43,6 +43,7 @@ dependencies:
   custom_text_field_with_drop_down: ^0.0.7
   load_switch: ^2.2.0
   graphview: ^1.2.0
+  fluttertoast: ^8.2.12
 
 
 

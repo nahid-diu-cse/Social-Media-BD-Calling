@@ -6,6 +6,7 @@ import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/forgetSystem_view/email_verification_view/email_verification_view.dart';
+import 'package:social_media/view_model/auth_controller/forget_password_controller.dart';
 
 class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});
@@ -15,6 +16,10 @@ class ForgetPasswordView extends StatefulWidget {
 }
 
 class _ForgetPasswordViewState extends State<ForgetPasswordView> {
+  final ForgetPasswordController forgetPasswordController = Get.put(
+    ForgetPasswordController(),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +50,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                   SizedBox(height: 32),
                   CustomText(
                     title:
-                        "Please enter your email address which wasused to create your account ",
+                        "Please enter your email address which used to create your account ",
                     textAlign: TextAlign.center,
                     color: AppColors.black100,
                     fontSize: 16,
@@ -63,14 +68,22 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                     ],
                   ),
                   SizedBox(height: 20),
-                  CustomTextFormField(hintText: "Enter your email address..."),
+                  CustomTextFormField(
+                    hintText: "Enter your email address...",
+                    controller: forgetPasswordController.emailController.value,
+                  ),
                   SizedBox(height: 24),
-                  CustomButton(title: "Next",
+                  Obx(
+                    () => CustomButton(
+                      title: "Next",
                       fontSize: 16,
+                      isLoading: forgetPasswordController.isLoading.value,
                       color: AppColors.bgColor,
-                      onTap: (){
-                    Get.to(()=>EmailVerificationView());
-                      })
+                      onTap: () {
+                        forgetPasswordController.forgetPassword();
+                      },
+                    ),
+                  ),
                 ],
               ),
             ],

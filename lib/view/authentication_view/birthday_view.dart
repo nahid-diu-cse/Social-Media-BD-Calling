@@ -4,7 +4,7 @@ import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/commonWidget/custom_app_bar.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view/authentication_view/gender_view/gender_view.dart';
+import 'package:social_media/view/authentication_view/gender_view.dart';
 
 class BirthdayView extends StatefulWidget {
   const BirthdayView({super.key});

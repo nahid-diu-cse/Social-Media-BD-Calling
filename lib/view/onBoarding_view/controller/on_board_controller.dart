@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:social_media/view/authentication_view/logIn_view/view/login_view.dart';
+import 'package:social_media/view/authentication_view/login_view.dart';
 import 'package:social_media/view/welcome_view/welcome_screen.dart';
 
 class OnboardingController extends GetxController {

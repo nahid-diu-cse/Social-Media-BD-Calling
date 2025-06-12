@@ -7,31 +7,31 @@ import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_divider_text.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view/buttom_navi_bar_view/buttom_navi_bar_view.dart';
-import 'package:social_media/view/forgetSystem_view/forget_password_view/forget_password_view.dart';
-import 'package:social_media/view/home_view/home_view.dart';
+import 'package:social_media/view/authentication_view/verification_view.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+import 'login_view.dart';
+
+class CreateAccountView extends StatefulWidget {
+  const CreateAccountView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<CreateAccountView> createState() => _CreateAccountViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
-  bool isChecked = false;
-
+class _CreateAccountViewState extends State<CreateAccountView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Log in",),
+      appBar: CustomAppBar(
+        title: "Create Account",
+      ),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 54),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -40,8 +40,32 @@ class _LoginViewState extends State<LoginView> {
               ),
               SizedBox(height: 40),
               CustomText(
+                title: "First Name",
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+              SizedBox(height: 10),
+              CustomTextFormField(hintText: "Enter your first name"),
+              SizedBox(height: 10),
+              CustomText(
+                title: "Last Name",
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+              SizedBox(height: 10),
+              CustomTextFormField(hintText: "Enter your first name"),
+              SizedBox(height: 10),
+              CustomText(
+                title: "Location",
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+              SizedBox(height: 10),
+              CustomTextFormField(hintText: "Enter your location address..."),
+              SizedBox(height: 10),
+              CustomText(
                 title: "Email",
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 10),
@@ -49,7 +73,7 @@ class _LoginViewState extends State<LoginView> {
               SizedBox(height: 10),
               CustomText(
                 title: "Password",
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 10),
@@ -58,42 +82,22 @@ class _LoginViewState extends State<LoginView> {
                 suffixIcon: Icon(Icons.visibility),
               ),
               SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: isChecked,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            isChecked = value!;
-                          });
-                        },
-                        activeColor: AppColors.mainColor,
-                      ),
-                      CustomText(title: "Keep me logged in", fontSize: 16),
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: (){
-                      Get.to(()=>ForgetPasswordView());
-                    },
-                    child: CustomText(
-                      title: "Forget Password?",
-                      color: AppColors.mainColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
+              CustomText(
+                title: "Confirm Password",
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 10),
+              CustomTextFormField(
+                hintText: "Enter confirm password",
+                suffixIcon: Icon(Icons.visibility),
+              ),
+              SizedBox(height: 10),
               CustomButton(
-                title: "Log In",
+                title: "Sign Up",
                 fontSize: 16,
                 onTap: () {
-                  Get.to(() => ButtomNaviBarView());
+                  Get.to(() => VerificationView());
                 },
               ),
               SizedBox(height: 32),
@@ -128,18 +132,21 @@ class _LoginViewState extends State<LoginView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomText(
-                    title: "Didn’t have an account? ",
+                    title: "Already have an account! ",
                     color: AppColors.black100,
                     fontSize: 16,
                   ),
                   CustomText(
-                    title: "Create an Account",
+                    title: "Log In",
                     color: AppColors.mainColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ],
               ),
+              SizedBox(height: 20),
+
+              SizedBox(height: 40),
             ],
           ),
         ),

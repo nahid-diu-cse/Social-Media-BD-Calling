@@ -4,8 +4,8 @@ import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view/authentication_view/createAccount_view/view/createAccount_view.dart';
-import 'package:social_media/view/authentication_view/logIn_view/view/login_view.dart';
+import 'package:social_media/view/authentication_view/createAccount_view.dart';
+import 'package:social_media/view/authentication_view/login_view.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

@@ -11,13 +11,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? elevation;
 
   const CustomAppBar({
-    Key? key,
+    super.key,
     this.title,
     this.actions,
     this.leading,
     this.backgroundColor, // Now nullable
     this.elevation = 4.0,
-  }) : super(key: key);
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

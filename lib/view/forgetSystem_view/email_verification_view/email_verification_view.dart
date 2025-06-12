@@ -6,6 +6,7 @@ import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/forgetSystem_view/change_password_view/change_password_view.dart';
+import 'package:social_media/view_model/auth_controller/forget_password_controller.dart';
 
 class EmailVerificationView extends StatefulWidget {
   const EmailVerificationView({super.key});
@@ -15,6 +16,10 @@ class EmailVerificationView extends StatefulWidget {
 }
 
 class _EmailVerificationViewState extends State<EmailVerificationView> {
+  ForgetPasswordController forgetPasswordController = Get.put(
+    ForgetPasswordController(),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +33,7 @@ class _EmailVerificationViewState extends State<EmailVerificationView> {
           ),
         ),
         centerTitle: true,
-        leading: Icon(Icons.arrow_back_ios_rounded),
+        leading: InkWell(child: Icon(Icons.arrow_back_ios_rounded),onTap: ()=>Get.back(),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -42,7 +47,7 @@ class _EmailVerificationViewState extends State<EmailVerificationView> {
             SizedBox(height: 32),
             CustomText(
               title:
-                  "Please enter the 4 digit code that was sent \nto xyz@gmail.com ",
+                  "Please enter the 4 digit code that was sent \nto ${forgetPasswordController.emailController.value.text}",
               fontSize: 17,
               textAlign: TextAlign.center,
               fontWeight: FontWeight.w500,
@@ -93,7 +98,7 @@ class _EmailVerificationViewState extends State<EmailVerificationView> {
               fontSize: 16,
               fontWeight: FontWeight.w500,
               onTap: () {
-                Get.to(()=>ChangePasswordView());
+                Get.to(() => ChangePasswordView());
               },
             ),
           ],

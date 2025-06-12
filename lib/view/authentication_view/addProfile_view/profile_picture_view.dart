@@ -5,7 +5,7 @@ import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/authentication_view/addProfile_view/add_profile_view.dart';
-import 'package:social_media/view/authentication_view/logIn_view/view/login_view.dart';
+import 'package:social_media/view/authentication_view/login_view.dart';
 
 class ProfilePictureView extends StatefulWidget {
   const ProfilePictureView({super.key});
