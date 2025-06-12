@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:social_media/view_model/auth_controller/sign_up_controller.dart';
 
 import '../../res/appColors/app_colors.dart';
 import '../../res/commonWidget/customText.dart';
@@ -10,7 +11,9 @@ import '../../res/commonWidget/custom_button.dart';
 import 'birthday_view.dart';
 
 class VerificationView extends StatelessWidget {
-  const VerificationView({super.key});
+  VerificationView({super.key});
+
+  final SignUpController signUpController = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +38,7 @@ class VerificationView extends StatelessWidget {
               ),
               SizedBox(height: 20),
               PinCodeTextField(
+                controller:signUpController.otpController,
                 appContext: context,
                 length: 6,
                 onChanged: (value) {},
@@ -66,7 +70,8 @@ class VerificationView extends StatelessWidget {
               CustomButton(
                 title: "Verify OTP",
                 onTap: () {
-                  Get.to(BirthdayView());
+                  signUpController.verifyOtp();
+                  // Get.to(BirthdayView());
                 },
               ),
             ],

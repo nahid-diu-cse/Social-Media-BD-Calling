@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:social_media/model/auth_response_model/signup/signup_response_model.dart';
 
 import '../../repo/auth_repo/auth_repo.dart';
 import '../../utils/app_utils.dart';
+import '../../view/authentication_view/birthday_view.dart';
 import '../../view/authentication_view/verification_view.dart';
 
 class SignUpController extends GetxController {
@@ -15,9 +17,14 @@ class SignUpController extends GetxController {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
+  //verify otp page
+  final otpController = TextEditingController();
+
   var isLoading = false.obs;
   var passwordVisible = false.obs;
   var confirmPasswordVisible = false.obs;
+
+  var signUpData = SignUpResponseModel().obs;
 
   final _api = AuthRepo();
 
@@ -47,7 +54,7 @@ class SignUpController extends GetxController {
   }
 
   Future<void> createAccount() async {
-    // if (!validateForm()) return;
+    if (!validateForm()) return;
 
     isLoading.value = true;
     Map<String, dynamic> data = {
@@ -59,13 +66,15 @@ class SignUpController extends GetxController {
       'password': passwordController.text,
     };
 
-
     _api
         .signUpApi(data)
         .then((value) {
           isLoading.value = false;
-          print("--------------------------------------------------");
+
           if (value['success'] == true) {
+            signUpData.value = SignUpResponseModel.fromJson(value);
+            print("--------------------------------------------------");
+            print(signUpData.value.message);
             Get.to(() => VerificationView());
           } else {
             AppUtils.snackBar("Sign Up Failed", value['message']);
@@ -77,6 +86,26 @@ class SignUpController extends GetxController {
         });
   }
 
+  Future<void> verifyOtp() async {
+    isLoading.value = true;
+    Map<String, dynamic> data = {'otp': int.parse(otpController.text.trim())};
+    _api
+        .verifyOtpApi(data, signUpData.value.data!.token!)
+        .then((value) {
+          isLoading.value = false;
+
+          if (value['success'] == true) {
+            AppUtils.snackBar("Otp", value['message']);
+            Get.to(BirthdayView());
+          } else {
+            AppUtils.snackBar("Otp", value['message']);
+          }
+        })
+        .onError((error, stackTrace) {
+          isLoading.value = false;
+          AppUtils.snackBar("Otp", error.toString());
+        });
+  }
 
   Future<void> googleSignUp() async {
     isLoading.value = true;
@@ -84,18 +113,18 @@ class SignUpController extends GetxController {
     _api
         .forgetPasswordApi(data)
         .then((value) {
-      isLoading.value = false;
+          isLoading.value = false;
 
-      if (value['success'] == true) {
-        AppUtils.snackBar("Forget Password", "Code Send to your email..");
-      } else {
-        AppUtils.snackBar("Forget Password", value['message']);
-      }
-    })
+          if (value['success'] == true) {
+            AppUtils.snackBar("Forget Password", "Code Send to your email..");
+          } else {
+            AppUtils.snackBar("Forget Password", value['message']);
+          }
+        })
         .onError((error, stackTrace) {
-      isLoading.value = false;
-      AppUtils.snackBar("Forget Password", error.toString());
-    });
+          isLoading.value = false;
+          AppUtils.snackBar("Forget Password", error.toString());
+        });
   }
 
   @override
@@ -107,6 +136,7 @@ class SignUpController extends GetxController {
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
+    otpController.dispose();
     super.onClose();
   }
 }

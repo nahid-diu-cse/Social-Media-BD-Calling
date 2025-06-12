@@ -17,13 +17,19 @@ class AuthRepo {
     return response;
   }
 
+  //Sign up page
   Future signUpApi(var data) async {
     dynamic response = await _apiServices.postMultipartApi(
       data: data,
       url: AppsUrl.signUpUrl,
     );
     print(response);
-    print("/////////////////////////");
+    return response;
+  }
+
+  Future verifyOtpApi(var data, String token) async {
+    dynamic response = await _apiServices.postApi(data, AppsUrl.verifyOtpUrl,authToken: token);
+    print(response);
     return response;
   }
 

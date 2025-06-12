@@ -25,14 +25,14 @@ class NetworkApiServices extends BaseApiServices {
     return responseJson;
   }
 
-  Future<dynamic> postApi(var data, String url) async {
+  Future<dynamic> postApi(var data, String url, {String? authToken=""}) async {
     if (kDebugMode) {
       print(data);
       print(url);
     }
     dynamic responseJson;
     Map<String, String> headers = {
-      'auth': '',
+      'token': authToken!,
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
