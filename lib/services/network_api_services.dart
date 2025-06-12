@@ -42,12 +42,70 @@ class NetworkApiServices extends BaseApiServices {
           .timeout(const Duration(seconds: 10));
       responseJson = returnResponse(response);
     } on SocketException {
-      //SocketException internet exception denote kore.
       throw InternetException('');
     } on RequestTimeOut {
       throw RequestTimeOut('');
     }
     return responseJson;
+  }
+
+  Future<dynamic> postFormApi(Map<String, String> data, String url) async {
+    if (kDebugMode) {
+      print(data);
+      print(url);
+    }
+    dynamic responseJson;
+    Map<String, String> headers = {
+      'auth': '',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json',
+    };
+    try {
+      final response = await http
+          .post(Uri.parse(url), headers: headers, body: data)
+          .timeout(const Duration(seconds: 10));
+      responseJson = returnResponse(response);
+    } on SocketException {
+      throw InternetException('');
+    } on RequestTimeOut {
+      throw RequestTimeOut('');
+    }
+    return responseJson;
+  }
+
+  Future<dynamic> postMultipartApi({
+    required Map<String, dynamic> data,
+    required String url,
+
+    File? file,
+    String? fileKey,
+    Map<String, String>? headers,
+  }) async {
+    if (kDebugMode) {
+      print(data);
+      print(url);
+    }
+
+    var uri = Uri.parse(url);
+    var request = http.MultipartRequest('POST', uri);
+
+    if (headers != null) {
+      request.headers.addAll(headers);
+    }
+
+    request.fields['data'] = jsonEncode(data);
+
+    // Add file if present
+    if (file != null && fileKey != null) {
+      request.files.add(await http.MultipartFile.fromPath(fileKey, file.path));
+    }
+
+    // Send request
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+
+    // Use your existing response handler
+    return returnResponse(response);
   }
 
   Future<dynamic> putApi(var data, String url) async {

@@ -33,4 +33,26 @@ class ForgetPasswordController extends GetxController {
           AppUtils.snackBar("Forget Password", error.toString());
         });
   }
+
+  Future<void> resendCode() async {
+    isLoading.value = true;
+    Map data = {'email': emailController.value.text};
+    _api
+        .forgetPasswordApi(data)
+        .then((value) {
+          isLoading.value = false;
+
+          if (value['success'] == true) {
+            forgetPassData.value = ForgetPasswordResponseModel.fromJson(value);
+            AppUtils.snackBar("Forget Password", "Code Send to your email..");
+            Get.to(() => EmailVerificationView());
+          } else {
+            AppUtils.snackBar("Forget Password", value['message']);
+          }
+        })
+        .onError((error, stackTrace) {
+          isLoading.value = false;
+          AppUtils.snackBar("Forget Password", error.toString());
+        });
+  }
 }

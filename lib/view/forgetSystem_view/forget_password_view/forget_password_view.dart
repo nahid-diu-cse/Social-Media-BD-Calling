@@ -33,7 +33,10 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
           ),
         ),
         centerTitle: true,
-        leading: Icon(Icons.arrow_back_ios_rounded),
+        leading: InkWell(
+          child: Icon(Icons.arrow_back_ios_rounded),
+          onTap: () => Get.back(),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),

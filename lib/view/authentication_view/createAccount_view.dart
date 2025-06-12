@@ -7,24 +7,17 @@ import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_divider_text.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view/authentication_view/verification_view.dart';
+import 'package:social_media/view_model/auth_controller/sign_up_controller.dart';
 
-import 'login_view.dart';
+class CreateAccountView extends StatelessWidget {
+  CreateAccountView({super.key});
 
-class CreateAccountView extends StatefulWidget {
-  const CreateAccountView({super.key});
+  final SignUpController controller = Get.put(SignUpController());
 
-  @override
-  State<CreateAccountView> createState() => _CreateAccountViewState();
-}
-
-class _CreateAccountViewState extends State<CreateAccountView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Create Account",
-      ),
+      appBar: CustomAppBar(title: "Create Account"),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: SingleChildScrollView(
@@ -45,7 +38,10 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 10),
-              CustomTextFormField(hintText: "Enter your first name"),
+              CustomTextFormField(
+                hintText: "Enter your first name",
+                controller: controller.firstNameController,
+              ),
               SizedBox(height: 10),
               CustomText(
                 title: "Last Name",
@@ -53,7 +49,10 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 10),
-              CustomTextFormField(hintText: "Enter your first name"),
+              CustomTextFormField(
+                hintText: "Enter your last name",
+                controller: controller.lastNameController,
+              ),
               SizedBox(height: 10),
               CustomText(
                 title: "Location",
@@ -61,7 +60,10 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 10),
-              CustomTextFormField(hintText: "Enter your location address..."),
+              CustomTextFormField(
+                hintText: "Enter your location address...",
+                controller: controller.locationController,
+              ),
               SizedBox(height: 10),
               CustomText(
                 title: "Email",
@@ -69,7 +71,23 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 10),
-              CustomTextFormField(hintText: "Enter your email address..."),
+              CustomTextFormField(
+                hintText: "Enter your email address...",
+                controller: controller.emailController,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              SizedBox(height: 10),
+              CustomText(
+                title: "Phone Number",
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+              SizedBox(height: 10),
+              CustomTextFormField(
+                hintText: "Enter your Phone Number...",
+                controller: controller.phoneNumberController,
+                keyboardType: TextInputType.emailAddress,
+              ),
               SizedBox(height: 10),
               CustomText(
                 title: "Password",
@@ -77,9 +95,23 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 10),
-              CustomTextFormField(
-                hintText: "Enter password",
-                suffixIcon: Icon(Icons.visibility),
+              Obx(
+                () => CustomTextFormField(
+                  hintText: "Enter password",
+                  controller: controller.passwordController,
+                  obscureText: !controller.passwordVisible.value,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      controller.passwordVisible.value
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      controller.passwordVisible.value =
+                          !controller.passwordVisible.value;
+                    },
+                  ),
+                ),
               ),
               SizedBox(height: 10),
               CustomText(
@@ -88,17 +120,32 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: 10),
-              CustomTextFormField(
-                hintText: "Enter confirm password",
-                suffixIcon: Icon(Icons.visibility),
+              Obx(
+                () => CustomTextFormField(
+                  hintText: "Enter confirm password",
+                  controller: controller.confirmPasswordController,
+                  obscureText: !controller.confirmPasswordVisible.value,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      controller.confirmPasswordVisible.value
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      controller.confirmPasswordVisible.value =
+                          !controller.confirmPasswordVisible.value;
+                    },
+                  ),
+                ),
               ),
               SizedBox(height: 10),
-              CustomButton(
-                title: "Sign Up",
-                fontSize: 16,
-                onTap: () {
-                  Get.to(() => VerificationView());
-                },
+              Obx(
+                () => CustomButton(
+                  title: "Sign Up",
+                  fontSize: 16,
+                  isLoading: controller.isLoading.value,
+                  onTap: controller.createAccount, //
+                ),
               ),
               SizedBox(height: 32),
               CustomDividerText(text: 'Or continue with'),
@@ -136,16 +183,20 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     color: AppColors.black100,
                     fontSize: 16,
                   ),
-                  CustomText(
-                    title: "Log In",
-                    color: AppColors.mainColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+                  GestureDetector(
+                    onTap: () {
+                      Get.back(); // Or navigate to LoginView if you want: Get.to(() => LoginView());
+                    },
+                    child: CustomText(
+                      title: "Log In",
+                      color: AppColors.mainColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),
               SizedBox(height: 20),
-
               SizedBox(height: 40),
             ],
           ),
