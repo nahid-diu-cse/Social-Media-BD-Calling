@@ -7,16 +7,19 @@ import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_divider_text.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
+import 'package:social_media/view/authentication_view/createAccount_view.dart';
 import 'package:social_media/view/buttom_navi_bar_view/buttom_navi_bar_view.dart';
 import 'package:social_media/view/forgetSystem_view/forget_password_view/forget_password_view.dart';
 
 import '../../view_model/auth_controller/login_controller.dart';
+import '../../view_model/profile_controller/profile_controller.dart';
 
 class LoginView extends StatelessWidget {
   // Initialize the controller
   final LoginController loginController = Get.put(LoginController());
 
   LoginView({super.key});
+  ProfileController profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +31,12 @@ class LoginView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+//-----------------------------------------------------------------------------------------------//
+              CustomButton(title: "text", onTap: (){
+
+                profileController.fetchFollowers();
+              }),
+//-----------------------------------------------------------------------------------------------//
               SizedBox(height: 54),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -137,11 +146,16 @@ class LoginView extends StatelessWidget {
                     color: AppColors.black100,
                     fontSize: 16,
                   ),
-                  CustomText(
-                    title: "Create an Account",
-                    color: AppColors.mainColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+                  InkWell(
+                    onTap: () {
+                      Get.to(CreateAccountView());
+                    },
+                    child: CustomText(
+                      title: "Create an Account",
+                      color: AppColors.mainColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),

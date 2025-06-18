@@ -59,10 +59,13 @@ class VerificationView extends StatelessWidget {
                     title: "If you didn’t receive a code, ",
                     color: AppColors.black33,
                   ),
-                  CustomText(
-                    title: "Resend",
-                    color: Colors.red,
-                    fontWeight: FontWeight.w500,
+                  InkWell(
+                    onTap: ()=>signUpController.resendOtp(),
+                    child: CustomText(
+                      title: "Resend",
+                      color: Colors.red,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),

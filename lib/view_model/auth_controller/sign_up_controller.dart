@@ -107,6 +107,27 @@ class SignUpController extends GetxController {
         });
   }
 
+
+  Future<void> resendOtp() async {
+    isLoading.value = true;
+    Map data = {'email': emailController.value.text};
+    _api
+        .resendOtpApi(data, signUpData.value.data!.token!)
+        .then((value) {
+          isLoading.value = false;
+
+          if (value['success'] == true) {
+            AppUtils.snackBar("Otp", value['message']);
+          } else {
+            AppUtils.snackBar("Otp", value['message']);
+          }
+        })
+        .onError((error, stackTrace) {
+          isLoading.value = false;
+          AppUtils.snackBar("Otp", error.toString());
+        });
+  }
+
   Future<void> googleSignUp() async {
     isLoading.value = true;
     Map data = {'email': emailController.value.text};

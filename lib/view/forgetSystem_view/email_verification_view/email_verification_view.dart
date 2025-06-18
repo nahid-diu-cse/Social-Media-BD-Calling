@@ -33,75 +33,91 @@ class _EmailVerificationViewState extends State<EmailVerificationView> {
           ),
         ),
         centerTitle: true,
-        leading: InkWell(child: Icon(Icons.arrow_back_ios_rounded),onTap: ()=>Get.back(),),
+        leading: InkWell(
+          child: Icon(Icons.arrow_back_ios_rounded),
+          onTap: () => Get.back(),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          children: [
-            SizedBox(height: 38),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [Image.asset(AppImages.otp)],
-            ),
-            SizedBox(height: 32),
-            CustomText(
-              title:
-                  "Please enter the 4 digit code that was sent \nto ${forgetPasswordController.emailController.value.text}",
-              fontSize: 17,
-              textAlign: TextAlign.center,
-              fontWeight: FontWeight.w500,
-              color: AppColors.black100,
-            ),
-            SizedBox(height: 32),
-            OtpTextField(
-              numberOfFields: 4,
-              borderColor: AppColors.black33,
-              focusedBorderColor: Colors.grey,
-              // styles: otpTextStyles,
-              showFieldAsBox: true,
-              fieldHeight: 45,
-              borderWidth: 1,
-              //runs when a code is typed in
-              onCodeChanged: (String code) {
-                //handle validation or checks here if necessary
-              },
-              //runs when every textfield is filled
-              onSubmit: (String verificationCode) {},
-            ),
-            SizedBox(height: 12),
-            RichText(
-              text: TextSpan(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              SizedBox(height: 38),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Image.asset(AppImages.otp)],
+              ),
+              SizedBox(height: 32),
+              CustomText(
+                title:
+                    "Please enter the 4 digit code that was sent \nto ${forgetPasswordController.emailController.value.text}",
+                fontSize: 17,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.w500,
+                color: AppColors.black100,
+              ),
+              SizedBox(height: 32),
+              OtpTextField(
+                numberOfFields: 6,
+                borderColor: AppColors.black33,
+                focusedBorderColor: Colors.grey,
+                // styles: otpTextStyles,
+                showFieldAsBox: true,
+                fieldHeight: 45,
+                borderWidth: 1,
+                //runs when a code is typed in
+                onCodeChanged: (String code) {
+                  //handle validation or checks here if necessary
+                },
+                //runs when every textfield is filled
+                onSubmit: (String verificationCode) {
+                  forgetPasswordController.otpController.value.text =
+                      verificationCode.toString();
+                },
+              ),
+              SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextSpan(
-                    text: "Don’t received code! ",
+                  Text(
+                    "Don’t received code! ",
                     style: TextStyle(
                       fontSize: 20,
                       color: AppColors.black100,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  TextSpan(
-                    text: "Resend Code?",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: AppColors.mainColor,
-                      fontWeight: FontWeight.w500,
+                  GestureDetector(
+                    onTap: () {
+                      forgetPasswordController.resendCode();
+                    },
+                    child: Text(
+                      "Resend Code?",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: AppColors.mainColor,
+                        fontWeight: FontWeight.w500,
+                        decoration:
+                            TextDecoration
+                                .underline, // Optional: make it look clickable
+                      ),
                     ),
                   ),
                 ],
               ),
-            ),
-            SizedBox(height: 24),
-            CustomButton(
-              title: "Next",
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              onTap: () {
-                Get.to(() => ChangePasswordView());
-              },
-            ),
-          ],
+              SizedBox(height: 24),
+              CustomButton(
+                isLoading: forgetPasswordController.isLoading.value,
+                title: "Next",
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                onTap: () {
+                  forgetPasswordController.verifyOtp();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -6,6 +6,7 @@ class AuthRepo {
 
   Future loginApi(var data) async {
     dynamic response = await _apiServices.postApi(data, AppsUrl.loginUrl);
+    print(response);
     return response;
   }
 
@@ -29,6 +30,19 @@ class AuthRepo {
 
   Future verifyOtpApi(var data, String token) async {
     dynamic response = await _apiServices.postApi(data, AppsUrl.verifyOtpUrl,authToken: token);
+    print(response);
+    return response;
+  }
+
+  Future resetPasswordApi(var data, String token) async {
+    dynamic response = await _apiServices.postApi(data, AppsUrl.resetPasswordUrl,authToken: token);
+    print(response);
+    return response;
+  }
+
+  //This is for resend the otp if any problem raise
+  Future resendOtpApi(var data, String token) async {
+    dynamic response = await _apiServices.postApi(data, AppsUrl.resendOtpUrl,authToken: token);
     print(response);
     return response;
   }

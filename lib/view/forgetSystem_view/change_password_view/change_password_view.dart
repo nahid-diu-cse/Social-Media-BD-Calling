@@ -6,6 +6,7 @@ import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/authentication_view/login_view.dart';
+import 'package:social_media/view_model/auth_controller/forget_password_controller.dart';
 
 class ChangePasswordView extends StatefulWidget {
   const ChangePasswordView({super.key});
@@ -15,6 +16,10 @@ class ChangePasswordView extends StatefulWidget {
 }
 
 class _ChangePasswordViewState extends State<ChangePasswordView> {
+  ForgetPasswordController forgetPasswordController = Get.put(
+    ForgetPasswordController(),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +29,10 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
           style: TextStyle(fontSize: 18, color: AppColors.black100),
         ),
         centerTitle: true,
-        leading: Icon(Icons.arrow_back_ios_rounded),
+        leading: InkWell(
+          onTap: Get.back,
+          child: Icon(Icons.arrow_back_ios_rounded),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -56,6 +64,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
               ),
               SizedBox(height: 10),
               CustomTextFormField(
+                controller: forgetPasswordController.passwordController.value,
                 hintText: "Enter Password",
                 suffixIcon: Icon(Icons.visibility),
               ),
@@ -71,6 +80,8 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
               ),
               SizedBox(height: 10),
               CustomTextFormField(
+                controller:
+                    forgetPasswordController.confirmPasswordController.value,
                 hintText: "Enter confirm Password",
                 suffixIcon: Icon(Icons.visibility),
               ),
@@ -80,7 +91,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 onTap: () {
-                  Get.to(() => LoginView());
+                  forgetPasswordController.resetPassword();
                 },
               ),
             ],

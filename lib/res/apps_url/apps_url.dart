@@ -3,6 +3,13 @@ class AppsUrl{
   static String loginUrl = "$baseUrl/auth/sign-in";
   static String signUpUrl = "$baseUrl/auth/sign-up";
   static String verifyOtpUrl = "$baseUrl/auth/verify-account";
+  static String resetPasswordUrl = "$baseUrl/auth/reset-password";
+  static String resendOtpUrl = "$baseUrl/auth/resend-otp";
   static String forgetPasswordUrl = "$baseUrl/auth/forget-password";
   static String googleUrl = "$baseUrl/auth/google";
+
+
+
+  //profile------------------------------------
+  static String pFetchFollowerUrl="$baseUrl/connection/followers";
 }

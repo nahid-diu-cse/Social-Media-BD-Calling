@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
@@ -7,10 +8,13 @@ import 'app_exceptions.dart';
 import 'base_api_services.dart';
 
 class NetworkApiServices extends BaseApiServices {
-  Future<dynamic> getApi(String url) async {
-    dynamic responseJson;
 
-    Map<String, String> headers = {'auth': ''};
+  Future<dynamic> getApi(String url, {String? token}) async {
+    dynamic responseJson;
+    Map<String, String> headers = {};
+    if (token != null && token.isNotEmpty) {
+      headers['Authorization'] = 'Bearer $token';
+    }
 
     try {
       final response = await http
@@ -19,20 +23,21 @@ class NetworkApiServices extends BaseApiServices {
       responseJson = returnResponse(response);
     } on SocketException {
       throw InternetException('');
-    } on RequestTimeOut {
+    } on TimeoutException {
       throw RequestTimeOut('');
     }
+
     return responseJson;
   }
 
-  Future<dynamic> postApi(var data, String url, {String? authToken=""}) async {
+  Future<dynamic> postApi(var data, String url, {String authToken = ""}) async {
     if (kDebugMode) {
       print(data);
       print(url);
     }
     dynamic responseJson;
     Map<String, String> headers = {
-      'token': authToken!,
+      'token': authToken,
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
