@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/app_images.dart';
-import 'package:social_media/view/friend_connection_view/widget/friend_view_card.dart';
+import 'package:social_media/view/home_view/friend_connection_view/widget/friend_view_card.dart';
 
 class FriendConnectionView extends StatefulWidget {
   const FriendConnectionView({super.key});

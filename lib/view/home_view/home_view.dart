@@ -4,12 +4,12 @@ import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
-import 'package:social_media/view/friend_connection_view/friend_connection_view.dart';
 import 'package:social_media/view/home_view/chat_view/chat_list_view.dart';
 import 'package:social_media/view/home_view/home_full_story_view.dart';
+import 'package:social_media/view/home_view/nearby_view/nearby_connection_view.dart';
 import 'package:social_media/view/new_post_view/clips_view.dart';
 import 'package:social_media/view/new_post_view/new_post_view.dart';
-import '../../view_model/controller/profile_controller/profile_controller.dart';
+import 'friend_connection_view/friend_connection_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -18,17 +18,16 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-
 class _HomeViewState extends State<HomeView> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
   }
+
   final List<Map<String, String>> stories = [
-    {'name': 'Your Story', 'image': AppImages.story,'type':'own'},
-    {'name': 'John Doe', 'image': AppImages.johndoe,'type':''},
+    {'name': 'Your Story', 'image': AppImages.story, 'type': 'own'},
+    {'name': 'John Doe', 'image': AppImages.johndoe, 'type': ''},
     {'name': 'Alisha Pretty', 'image': AppImages.alisha, 'type': ''},
   ];
 
@@ -39,10 +38,9 @@ class _HomeViewState extends State<HomeView> {
         title: Image.asset(AppImages.splashBg, width: 100, height: 20),
         actions: [
           InkWell(
-              onTap: (){
-
-              },
-              child: Image.asset(AppImages.friend, width: 22, height: 22)),
+            onTap: () {},
+            child: Image.asset(AppImages.friend, width: 22, height: 22),
+          ),
           SizedBox(width: 15),
           Image.asset(AppImages.notification, width: 22, height: 22),
           SizedBox(width: 15),
@@ -69,8 +67,9 @@ class _HomeViewState extends State<HomeView> {
                   stories.map((story) {
                     return GestureDetector(
                       onTap: () {
-                        story['type']=='own'?
-                        bottomSnack():Get.to(HomeFullStoryView());
+                        story['type'] == 'own'
+                            ? bottomSnack()
+                            : Get.to(HomeFullStoryView());
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 5),
@@ -95,11 +94,16 @@ class _HomeViewState extends State<HomeView> {
                   children: [
                     CustomContainerTextCard(text: "For you"),
                     SizedBox(width: 10),
-                    CustomText(
-                      title: "Nearby",
-                      fontSize: 16,
-                      color: AppColors.black100,
-                      fontWeight: FontWeight.w600,
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(NearbyView());
+                      },
+                      child: CustomText(
+                        title: "Nearby",
+                        fontSize: 16,
+                        color: AppColors.black100,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     SizedBox(width: 10),
                     GestureDetector(
@@ -134,7 +138,10 @@ class _HomeViewState extends State<HomeView> {
                       fontSize: 15,
                     ),
                     subtitle: Row(
-                      children: [CustomText(title: "Los Angles,CA "), CustomText(title: ".20h ago")],
+                      children: [
+                        CustomText(title: "Los Angles,CA "),
+                        CustomText(title: ".20h ago"),
+                      ],
                     ),
                     trailing: Container(
                       height: 30,
@@ -265,7 +272,10 @@ class _HomeViewState extends State<HomeView> {
                       fontSize: 15,
                     ),
                     subtitle: Row(
-                      children: [CustomText(title: "Los Angles,CA "),  CustomText(title: ".20h ago")],
+                      children: [
+                        CustomText(title: "Los Angles,CA "),
+                        CustomText(title: ".20h ago"),
+                      ],
                     ),
                     trailing: Container(
                       height: 30,
@@ -489,8 +499,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-
-  Future bottomSnack(){
+  Future bottomSnack() {
     return Get.bottomSheet(
       Container(
         height: 151,
@@ -523,11 +532,7 @@ class _HomeViewState extends State<HomeView> {
                 },
                 child: Row(
                   children: [
-                    Image.asset(
-                      AppImages.square,
-                      height: 18,
-                      width: 18,
-                    ),
+                    Image.asset(AppImages.square, height: 18, width: 18),
                     SizedBox(width: 10),
                     CustomText(
                       title: "New Post",
@@ -545,11 +550,7 @@ class _HomeViewState extends State<HomeView> {
                 },
                 child: Row(
                   children: [
-                    Image.asset(
-                      AppImages.square,
-                      height: 18,
-                      width: 18,
-                    ),
+                    Image.asset(AppImages.square, height: 18, width: 18),
                     SizedBox(width: 10),
                     CustomText(
                       title: "Clips",
