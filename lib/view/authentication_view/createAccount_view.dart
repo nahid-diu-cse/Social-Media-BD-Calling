@@ -7,7 +7,8 @@ import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_divider_text.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view_model/auth_controller/sign_up_controller.dart';
+
+import '../../view_model/controller/auth_controller/sign_up_controller.dart';
 
 class CreateAccountView extends StatelessWidget {
   CreateAccountView({super.key});

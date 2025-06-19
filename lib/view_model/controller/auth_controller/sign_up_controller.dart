@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:social_media/model/auth_response_model/signup/signup_response_model.dart';
 
-import '../../repo/auth_repo/auth_repo.dart';
-import '../../utils/app_utils.dart';
-import '../../view/authentication_view/birthday_view.dart';
-import '../../view/authentication_view/verification_view.dart';
+import '../../../repo/auth_repo/auth_repo.dart';
+import '../../../utils/app_utils.dart';
+import '../../../view/authentication_view/birthday_view.dart';
+import '../../../view/authentication_view/verification_view.dart';
 
 class SignUpController extends GetxController {
   // TextEditingControllers for all fields

@@ -1,12 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media/model/auth_response_model/login/login_error_response_model.dart';
 import 'package:social_media/model/auth_response_model/login/login_response_model.dart';
 import 'package:social_media/repo/auth_repo/auth_repo.dart';
 import 'package:social_media/utils/app_utils.dart';
+import 'package:social_media/view_model/services/user_preferences.dart';
 
-import '../../view/buttom_navi_bar_view/buttom_navi_bar_view.dart';
+import '../../../model/user_pref_model/user_pref_model.dart';
+import '../../../view/buttom_navi_bar_view/buttom_navi_bar_view.dart';
 
 class LoginController extends GetxController {
   final _api = AuthRepo();
@@ -16,6 +19,8 @@ class LoginController extends GetxController {
 
   var emailController = TextEditingController().obs;
   var passwordController = TextEditingController().obs;
+
+  UserPreferences userPreferences = UserPreferences();
 
   void toggleCheckbox(bool value) {
     isChecked.value = value;
@@ -32,13 +37,22 @@ class LoginController extends GetxController {
     isLoading.value = true;
     _api
         .loginApi(data)
-        .then((value) {
+        .then((value) async {
           isLoading.value = false;
 
           if (value['success'] == true) {
             loginData.value = LogInResponseModel.fromJson(value);
-            AppUtils.snackBar("Login", "Login Successful.");
-            Get.offAll(() => ButtomNaviBarView());
+            UserPrefModel userPrefModel = UserPrefModel.fromJson({
+              "token": value["data"]["accessToken"],
+              "isLogin": true,
+            });
+
+            userPreferences.saveUser(userPrefModel).then((value) async {
+              AppUtils.snackBar("Login", "Login Successful.");
+              UserPrefModel data = await userPreferences.getUser();
+              print(data.token);
+              Get.offAll(() => ButtomNaviBarView());
+            });
           } else {
             LogInErrorResponseModel.fromJson(value);
             AppUtils.snackBar("Login", "Login Failed.");

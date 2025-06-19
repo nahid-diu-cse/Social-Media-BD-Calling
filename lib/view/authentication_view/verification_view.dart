@@ -2,12 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:social_media/view_model/auth_controller/sign_up_controller.dart';
-
 import '../../res/appColors/app_colors.dart';
 import '../../res/commonWidget/customText.dart';
 import '../../res/commonWidget/custom_app_bar.dart';
 import '../../res/commonWidget/custom_button.dart';
+import '../../view_model/controller/auth_controller/sign_up_controller.dart';
 import 'birthday_view.dart';
 
 class VerificationView extends StatelessWidget {

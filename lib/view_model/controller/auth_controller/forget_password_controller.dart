@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:social_media/model/auth_response_model/forget_password/forget_password_response_model.dart';
 
-import '../../repo/auth_repo/auth_repo.dart';
-import '../../utils/app_utils.dart';
-import '../../view/authentication_view/login_view.dart';
-import '../../view/forgetSystem_view/change_password_view/change_password_view.dart';
-import '../../view/forgetSystem_view/email_verification_view/email_verification_view.dart';
+import '../../../repo/auth_repo/auth_repo.dart';
+import '../../../utils/app_utils.dart';
+import '../../../view/authentication_view/login_view.dart';
+import '../../../view/forgetSystem_view/change_password_view/change_password_view.dart';
+import '../../../view/forgetSystem_view/email_verification_view/email_verification_view.dart';
 
 class ForgetPasswordController extends GetxController {
   final _api = AuthRepo();

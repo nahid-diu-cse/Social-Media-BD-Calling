@@ -6,7 +6,8 @@ import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/forgetSystem_view/change_password_view/change_password_view.dart';
-import 'package:social_media/view_model/auth_controller/forget_password_controller.dart';
+
+import '../../../view_model/controller/auth_controller/forget_password_controller.dart';
 
 class EmailVerificationView extends StatefulWidget {
   const EmailVerificationView({super.key});

@@ -1,24 +1,15 @@
 import 'package:flutter/foundation.dart';
+
 import '../../res/apps_url/apps_url.dart';
 import '../../services/network_api_services.dart';
 
-class ProfileRepo {
+class ConnectionsRepo{
   final _apiServices = NetworkApiServices();
 
 
-  Future fetchFollowers() async {
+  Future nearbyUserUrl() async {
     dynamic response = await _apiServices.getApi(
-      AppsUrl.pFetchFollowerUrl,
-    );
-    if (kDebugMode) {
-      print(response);
-    }
-    return response;
-  }
-
-  Future fetchFollowing() async {
-    dynamic response = await _apiServices.getApi(
-      AppsUrl.pFetchFollowingUrl,
+      AppsUrl.nearbyUserUrl,
     );
     if (kDebugMode) {
       print(response);

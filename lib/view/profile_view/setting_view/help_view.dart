@@ -4,9 +4,10 @@ import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view/setting_view/about_us_view.dart';
-import 'package:social_media/view/setting_view/privacy_policy_view.dart';
-import 'package:social_media/view/setting_view/teams_service_view.dart';
+import 'package:social_media/view/profile_view/setting_view/privacy_policy_view.dart';
+import 'package:social_media/view/profile_view/setting_view/teams_service_view.dart';
+
+import 'about_us_view.dart';
 
 class HelpView extends StatefulWidget {
   const HelpView({super.key});

@@ -6,8 +6,8 @@ import 'package:social_media/res/commonWidget/custom_app_bar.dart';
 import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view/forgetSystem_view/email_verification_view/email_verification_view.dart';
-import 'package:social_media/view_model/auth_controller/forget_password_controller.dart';
+
+import '../../../view_model/controller/auth_controller/forget_password_controller.dart';
 
 class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});

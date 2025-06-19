@@ -9,7 +9,9 @@ class ContainerViewCard extends StatelessWidget {
     required this.text,
     this.textColor,
     required this.image,
-    this.imagecolor, this.border,
+    this.imagecolor,
+    this.border,
+    this.width, // Nullable width
   });
 
   final Color? cardColor;
@@ -18,16 +20,17 @@ class ContainerViewCard extends StatelessWidget {
   final String text;
   final String image;
   final Border? border;
+  final double? width; // Nullable width
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 36,
-      width: 165,
+      width: width ?? 165, // Default width if null
       decoration: BoxDecoration(
         color: cardColor ?? AppColors.mainColor,
         borderRadius: BorderRadius.circular(15),
-        border: border
+        border: border,
       ),
       child: Row(
         children: [

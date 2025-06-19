@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/view/onBoarding_view/view/onBoaring_view.dart';
 
+import '../../view_model/services/splash_services.dart';
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -12,15 +14,14 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+
+  SplashServices splashServices=SplashServices();
+
   @override
   void initState() {
     super.initState();
-    // Navigate to OnboardingScreen after 4 seconds
-    Future.delayed(const Duration(seconds: 4), () {
-      if (mounted) {
-     Get.offAll(()=>OnBoardingView());
-      }
-    });
+
+    splashServices.isLogin();
   }
 
   @override

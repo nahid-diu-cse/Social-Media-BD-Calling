@@ -4,14 +4,26 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
+import '../view_model/services/user_preferences.dart';
 import 'app_exceptions.dart';
 import 'base_api_services.dart';
 
 class NetworkApiServices extends BaseApiServices {
+  UserPreferences userPreferences = UserPreferences();
 
-  Future<dynamic> getApi(String url, {String? token}) async {
+  Future<dynamic> getApi(String url) async {
+    var user = await userPreferences.getUser();
     dynamic responseJson;
-    Map<String, String> headers = {};
+
+    // Check if user has a token
+    String? token = user.token;
+
+    // Set headers with or without Bearer token
+    Map<String, String> headers = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+    };
+
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
@@ -22,9 +34,9 @@ class NetworkApiServices extends BaseApiServices {
           .timeout(const Duration(seconds: 100));
       responseJson = returnResponse(response);
     } on SocketException {
-      throw InternetException('');
+      throw InternetException('No Internet connection');
     } on TimeoutException {
-      throw RequestTimeOut('');
+      throw RequestTimeOut('The request timed out');
     }
 
     return responseJson;
@@ -35,12 +47,19 @@ class NetworkApiServices extends BaseApiServices {
       print(data);
       print(url);
     }
+    var user = await userPreferences.getUser();
     dynamic responseJson;
+
+    String? token = user.token;
+
     Map<String, String> headers = {
-      'token': authToken,
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
+
+    if (token != null && token.isNotEmpty) {
+      headers['Authorization'] = 'Bearer $token';
+    }
     try {
       final response = await http
           .post(Uri.parse(url), headers: headers, body: jsonEncode(data))

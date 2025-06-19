@@ -6,7 +6,8 @@ import 'package:social_media/res/commonWidget/custom_button.dart';
 import 'package:social_media/res/commonWidget/custom_text_form_field.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/authentication_view/login_view.dart';
-import 'package:social_media/view_model/auth_controller/forget_password_controller.dart';
+
+import '../../../view_model/controller/auth_controller/forget_password_controller.dart';
 
 class ChangePasswordView extends StatefulWidget {
   const ChangePasswordView({super.key});

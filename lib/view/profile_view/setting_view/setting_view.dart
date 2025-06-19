@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
-import 'package:social_media/view/setting_view/security_password_view.dart';
-import 'package:social_media/view/setting_view/help_view.dart';
+import 'package:social_media/view/profile_view/setting_view/security_password_view.dart';
+
+import 'help_view.dart';
 
 class SettingView extends StatefulWidget {
   const SettingView({super.key});

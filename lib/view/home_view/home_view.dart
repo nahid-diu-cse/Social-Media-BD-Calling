@@ -9,6 +9,7 @@ import 'package:social_media/view/home_view/chat_view/chat_list_view.dart';
 import 'package:social_media/view/home_view/home_full_story_view.dart';
 import 'package:social_media/view/new_post_view/clips_view.dart';
 import 'package:social_media/view/new_post_view/new_post_view.dart';
+import '../../view_model/controller/profile_controller/profile_controller.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -17,7 +18,14 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
+
 class _HomeViewState extends State<HomeView> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   final List<Map<String, String>> stories = [
     {'name': 'Your Story', 'image': AppImages.story,'type':'own'},
     {'name': 'John Doe', 'image': AppImages.johndoe,'type':''},
@@ -30,7 +38,11 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: Image.asset(AppImages.splashBg, width: 100, height: 20),
         actions: [
-          Image.asset(AppImages.friend, width: 22, height: 22),
+          InkWell(
+              onTap: (){
+
+              },
+              child: Image.asset(AppImages.friend, width: 22, height: 22)),
           SizedBox(width: 15),
           Image.asset(AppImages.notification, width: 22, height: 22),
           SizedBox(width: 15),
