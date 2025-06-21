@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:social_media/view/new_post_view/select_category_view.dart';
 import 'package:social_media/view_model/controller/add_post_controller/add_post_controller.dart';
 import '../../res/appColors/app_colors.dart';
 import '../../res/appImage/App_images.dart';
@@ -30,7 +31,7 @@ class _AddPostViewState extends State<AddPostView> {
             padding: const EdgeInsets.only(right: 8.0),
             child: GestureDetector(
               onTap: (){
-                Get.to();
+                Get.to(SelectCategoryView());
               },
               child: CustomText(
                 title: "Next",
@@ -79,6 +80,7 @@ class _AddPostViewState extends State<AddPostView> {
               ),
               SizedBox(height: 5),
               TextField(
+                controller: addPostController.descriptionTextController,
                 decoration: InputDecoration(
                   hintText: "Write post description...",
                   filled: true,

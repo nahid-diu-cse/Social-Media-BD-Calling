@@ -116,7 +116,6 @@ class NetworkApiServices extends BaseApiServices {
     if (headers != null) {
       request.headers.addAll(headers);
     }
-
     request.fields['data'] = jsonEncode(data);
 
     // Add file if present

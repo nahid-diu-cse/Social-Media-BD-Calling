@@ -15,4 +15,5 @@ class AppsUrl {
   static String followUrl = "$baseUrl/connection/follow-user";
   static String sendRequestUrl = "$baseUrl/connection/send-request";
   static String myConnectionsUrl = "$baseUrl/connection";
+  static String addPostUrl = "$baseUrl/post";
 }
