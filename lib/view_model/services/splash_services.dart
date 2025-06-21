@@ -7,7 +7,7 @@ import 'package:social_media/view/buttom_navi_bar_view/buttom_navi_bar_view.dart
 import 'package:social_media/view/home_view/home_view.dart';
 import 'package:social_media/view_model/services/user_preferences.dart';
 
-import '../../view/onBoarding_view/view/onBoaring_view.dart';
+import '../../view/onBoarding_view/onBoaring_view.dart';
 
 class SplashServices {
   UserPreferences userPreferences = UserPreferences();

@@ -6,10 +6,9 @@ import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
 import 'package:social_media/view/home_view/chat_view/chat_list_view.dart';
 import 'package:social_media/view/home_view/home_full_story_view.dart';
-import 'package:social_media/view/home_view/nearby_view/nearby_connection_view.dart';
-import 'package:social_media/view/new_post_view/clips_view.dart';
-import 'package:social_media/view/new_post_view/new_post_view.dart';
-import 'friend_connection_view/friend_connection_view.dart';
+import 'package:social_media/view_model/controller/connection_controller/connections_controller.dart';
+import '../new_post_view/clips_view.dart';
+import '../new_post_view/new_post_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -19,6 +18,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+
+  ConnectionsController connectionsController=Get.put(ConnectionsController());
   @override
   void initState() {
     // TODO: implement initState
@@ -96,7 +97,7 @@ class _HomeViewState extends State<HomeView> {
                     SizedBox(width: 10),
                     GestureDetector(
                       onTap: () {
-                        Get.to(NearbyView());
+                        connectionsController.nearbyUser();
                       },
                       child: CustomText(
                         title: "Nearby",
@@ -108,7 +109,7 @@ class _HomeViewState extends State<HomeView> {
                     SizedBox(width: 10),
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => FriendConnectionView());
+                        connectionsController.myConnections();
                       },
                       child: CustomText(
                         title: "Connections",

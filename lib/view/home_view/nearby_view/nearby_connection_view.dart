@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_media/view/home_view/nearby_view/widget/nc_widget.dart';
+import 'package:social_media/view_model/controller/connection_controller/connections_controller.dart';
 
 import '../../../res/appColors/app_colors.dart';
 import '../../../res/appImage/App_images.dart';
-import '../friend_connection_view/widget/friend_view_card.dart';
 
 class NearbyView extends StatelessWidget {
   NearbyView({super.key});
 
+  ConnectionsController connectionsController = Get.put(
+    ConnectionsController(),
+  );
   List friendRequests = [
     {
       'name': 'Istiak Ahmed',
@@ -50,16 +53,32 @@ class NearbyView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              ListView.builder(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: 7,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: NcWidget(),
-                  );
-                },
+              Obx(
+                () =>
+                    connectionsController.isLoading.value
+                        ? Center(child: CircularProgressIndicator())
+                        : ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount:
+                              connectionsController
+                                  .nearbyUsersData
+                                  .value
+                                  .data!
+                                  .length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: NcWidget(
+                                data:
+                                    connectionsController
+                                        .nearbyUsersData
+                                        .value
+                                        .data![index],
+                              ),
+                            );
+                          },
+                        ),
               ),
             ],
           ),

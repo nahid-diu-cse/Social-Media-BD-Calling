@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
 import 'package:social_media/view/welcome_view/welcome_screen.dart';
-import '../../../res/appColors/app_colors.dart';
-import '../controller/on_board_controller.dart';
+import '../../res/appColors/app_colors.dart';
+import 'controller/on_board_controller.dart';
 
 class OnBoardingView extends StatelessWidget {
   OnBoardingView({super.key});

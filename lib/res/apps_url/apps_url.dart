@@ -12,4 +12,7 @@ class AppsUrl {
   static String pFetchFollowerUrl = "$baseUrl/connection/followers";
   static String pFetchFollowingUrl = "$baseUrl/connection/followers";
   static String nearbyUserUrl = "$baseUrl/user/nearby-users";
+  static String followUrl = "$baseUrl/connection/follow-user";
+  static String sendRequestUrl = "$baseUrl/connection/send-request";
+  static String myConnectionsUrl = "$baseUrl/connection";
 }

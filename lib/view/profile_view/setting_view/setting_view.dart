@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
+import 'package:social_media/view/authentication_view/login_view.dart';
 import 'package:social_media/view/profile_view/setting_view/security_password_view.dart';
+import 'package:social_media/view_model/services/user_preferences.dart';
 
 import 'help_view.dart';
 
@@ -16,7 +18,6 @@ class SettingView extends StatefulWidget {
 }
 
 class _SettingViewState extends State<SettingView> {
-
   bool isSwitchOn = true;
 
   @override
@@ -38,14 +39,14 @@ class _SettingViewState extends State<SettingView> {
         child: Column(
           children: [
             GestureDetector(
-              onTap: (){
-               // Get.to(()=>HelpView());
+              onTap: () {
+                // Get.to(()=>HelpView());
               },
               child: ListTile(
                 leading: Image.asset(AppImages.account, height: 24, width: 24),
                 title: CustomText(
                   title: "Account",
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                 ),
                 subtitle: CustomText(
@@ -59,14 +60,14 @@ class _SettingViewState extends State<SettingView> {
             ),
             Divider(),
             GestureDetector(
-              onTap: (){
-                Get.to(()=>SecurityPasswordView());
+              onTap: () {
+                Get.to(() => SecurityPasswordView());
               },
               child: ListTile(
-                 leading: Image.asset(AppImages.security, height: 24, width: 24),
+                leading: Image.asset(AppImages.security, height: 24, width: 24),
                 title: CustomText(
                   title: "Security",
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                 ),
                 subtitle: CustomText(
@@ -80,10 +81,10 @@ class _SettingViewState extends State<SettingView> {
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.notifications_none,size: 24,),
+              leading: Icon(Icons.notifications_none, size: 24),
               title: CustomText(
                 title: "Notification",
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
               subtitle: CustomText(
@@ -107,15 +108,15 @@ class _SettingViewState extends State<SettingView> {
             ),
             Divider(),
             GestureDetector(
-              onTap: (){
-                Get.to(()=>HelpView());
+              onTap: () {
+                Get.to(() => HelpView());
               },
 
               child: ListTile(
-                leading: Icon(Icons.help_outline_rounded,size: 24,),
+                leading: Icon(Icons.help_outline_rounded, size: 24),
                 title: CustomText(
                   title: "Help",
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                 ),
                 subtitle: CustomText(
@@ -125,6 +126,28 @@ class _SettingViewState extends State<SettingView> {
                   fontSize: 13,
                 ),
                 trailing: Icon(Icons.arrow_forward_ios, size: 20),
+              ),
+            ),
+            Divider(),
+            GestureDetector(
+              onTap: () {
+                UserPreferences().removeUser();
+                Get.offAll(() => LoginView());
+              },
+
+              child: ListTile(
+                leading: Icon(Icons.logout, size: 24, color: AppColors.red500),
+                title: CustomText(
+                  title: "Log Out",
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.red500,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 20,
+                  color: AppColors.red500,
+                ),
               ),
             ),
           ],

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:social_media/res/appImage/app_images.dart';
-import 'package:social_media/view/add_view/add_view.dart';
 import 'package:social_media/view/buttom_navi_bar_view/controller/buttom_navi_controller.dart';
 import 'package:social_media/view/chain_view/chain_view.dart';
 import 'package:social_media/view/community_view/community_view.dart';
 import 'package:social_media/view/home_view/home_view.dart';
 import 'package:social_media/view/profile_view/profile_view.dart';
+
+import '../add_post_view/add_post_view.dart';
 
 class ButtomNaviBarView extends StatefulWidget {
   const ButtomNaviBarView({super.key});
@@ -19,7 +20,7 @@ class _ButtomNaviBarViewState extends State<ButtomNaviBarView> {
   final List<Widget> _screens = [
     HomeView(),
     ChainView(),
-    AddView(),
+    AddPostView(),
     CommunityView(),
     ProfileView(),
   ];

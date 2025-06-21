@@ -1,16 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:social_media/res/appColors/app_colors.dart';
 import 'package:social_media/res/appImage/app_images.dart';
 import 'package:social_media/res/commonWidget/custom_container_text_card.dart';
 import 'package:social_media/res/commonWidget/customText.dart';
+import 'package:social_media/view_model/controller/connection_controller/connections_controller.dart';
 
 class FriendViewCard extends StatelessWidget {
   const FriendViewCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 95,
       width: double.infinity,
       child: Row(
@@ -34,7 +37,7 @@ class FriendViewCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomText(
-                        title: "Istiak Ahmed",
+                        title: "",
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
